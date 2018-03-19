@@ -30,7 +30,7 @@ namespace LightNovelSniffer.Output
             };
             footerTbl.AddCell(footer);
 
-            footerTbl.WriteSelectedRows(0, -1, 0, (doc.BottomMargin), writer.DirectContent);
+            footerTbl.WriteSelectedRows(0, -1, 0, (doc.BottomMargin-5), writer.DirectContent);
         }
     }
 }

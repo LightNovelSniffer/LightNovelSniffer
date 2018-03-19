@@ -38,7 +38,7 @@ namespace LightNovelSniffer.Output
             byte[] cover = WebCrawler.DownloadCover(lnParameters.urlCover);
             if (cover != null && cover.Length > 0)
             {
-                string coverFilename = lnParameters.urlCover.Split('/').Last();
+                string coverFilename = "cover." + lnParameters.urlCover.Split('.').Last();
                 
                 epub.AddImageData(coverFilename, cover);
                 epub.AddMetaItem("cover", coverFilename);
