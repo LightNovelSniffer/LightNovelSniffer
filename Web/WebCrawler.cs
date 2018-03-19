@@ -31,10 +31,9 @@ namespace LightNovelSniffer.Web
 
             while (urlParameter.lastChapterNumber <= -1 || i <= urlParameter.lastChapterNumber)
             {
-                string currentUrl = "";
                 try
                 {
-                    currentUrl = String.Format(baseUrl, i);
+                    var currentUrl = String.Format(baseUrl, i);
                     ConsoleTools.Progress(
                         string.Format("Récupération du chapitre {0}/{1}"
                             , i
@@ -52,23 +51,20 @@ namespace LightNovelSniffer.Web
 
                     if (lnChapter == null || lnChapter.paragraphs.Count == 0)
                     {
-                        if (Globale.INTERACTIVE_MODE &&
+                        throw new WebException();
+                    }
+                    
+                    lnChapter.chapNumber = i;
+                    lnChapters.Add(lnChapter);
+                }
+                catch (WebException)
+                {
+                    if (!Globale.INTERACTIVE_MODE ||
                             !ConsoleTools.Ask(
                                 string.Format(
                                     "Le chapitre {0} ne semble pas exister. Voulez vous vérifier la présence du suivant ?",
                                     i)))
-                            break;
-                    }
-                    else
-                    {
-                        lnChapter.chapNumber = i;
-                        lnChapters.Add(lnChapter);
-                    }
-                }
-                catch (WebException)
-                {
-                    ConsoleTools.Log(string.Format("Erreur lors du traitement de l'URL \"{0}\"", currentUrl), 3);
-                    return;
+                        break;
                 }
                 i++;
             }
