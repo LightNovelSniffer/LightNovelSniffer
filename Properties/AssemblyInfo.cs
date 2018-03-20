@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LighNovelSniffer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("C# .Net 4.0 Web crawler to create PDF and Epub version of online light novels")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("LighNovelSniffer")]
