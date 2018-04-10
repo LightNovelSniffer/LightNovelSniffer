@@ -33,7 +33,7 @@ namespace LightNovelSniffer
                     GetNovel(ln);
             }
 
-            if (Globale.INTERACTIVE_MODE && ConsoleTools.Ask("Fin du traitement des Light Novel prédéfinies. Voulez vous en traiter d'autres ?"))
+            if (Globale.INTERACTIVE_MODE && ConsoleTools.AskNegative("Fin du traitement des Light Novel prédéfinies. Voulez vous en traiter d'autres ?"))
             {
                 LnParameters ln;
                 do

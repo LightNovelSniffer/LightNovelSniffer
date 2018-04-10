@@ -78,5 +78,11 @@ namespace LightNovelSniffer
 
             return url + "{0}";
         }
+
+        public static bool AskNegative(string question)
+        {
+            string input = AskInformation(question + " o/N ");
+            return !(string.IsNullOrEmpty(input) || input.ToUpper().Equals("N"));
+        }
     }
 }
