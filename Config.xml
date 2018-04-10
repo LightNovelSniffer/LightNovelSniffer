@@ -2,7 +2,7 @@
 <Parameters>
     <outputFolder>E:\LN_Test\</outputFolder>
 
-    <interactiveMode>false</interactiveMode>
+    <interactiveMode>true</interactiveMode>
     
     <author>ARUS Joshua</author>
     <defaultChapterTitle>Chapitre {0}</defaultChapterTitle>
@@ -43,11 +43,11 @@
         </ln>
         
         -->
+        <!--
         
         <ln>
             <name>Btth</name>
             <urlCover>https://i2.wp.com/whitenovels.com/wp-content/uploads/2016/02/btth-2-1.jpg</urlCover>
-            <!--<urlCover>http://chireads.com/wp-content/uploads/2017/09/%E6%96%97%E7%A0%B4%E8%8B%8D%E7%A9%B9-jpg.jpg</urlCover>-->
             <versions>
                 <version>
                     <url>http://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-{0}</url>
@@ -55,13 +55,30 @@
                     <firstChapterNumber></firstChapterNumber>
                     <lastChapterNumber></lastChapterNumber>
                 </version>
-                <!--<version>
+                <version>
                     <url>http://xiaowaz.fr/articles/btth-chapitre-{0}</url>
                     <language>FR</language>
                     <firstChapterNumber></firstChapterNumber>
                     <lastChapterNumber></lastChapterNumber>
-                </version>-->
+                </version>
+            </versions>
+        </ln>
+        
+        -->
+        
+        <ln>
+            <name>KoG</name>
+            <urlCover>https://images-na.ssl-images-amazon.com/images/I/41rw9LSfn1L.jpg</urlCover>
+            <versions>
+                <version>
+                    <url>http://gravitytales.com/Novel/king-of-gods/kog-chapter-{0}</url>
+                    <language>EN</language>
+                    <firstChapterNumber>1</firstChapterNumber>
+                    <lastChapterNumber>10</lastChapterNumber>
+                </version>
             </versions>
         </ln>-->
+        
+
     </lnToRetrieve>
 </Parameters>
