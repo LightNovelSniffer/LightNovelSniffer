@@ -11,6 +11,37 @@ using PdfImage = iTextSharp.text.Image;
 
 namespace LightNovelSniffer.Output
 {
+    internal class PdfFooterEvent : PdfPageEventHelper
+    {
+        private readonly string title;
+
+        public PdfFooterEvent(string chapterTitle)
+        {
+            title = chapterTitle;
+        }
+
+        public override void OnEndPage(PdfWriter writer, Document doc)
+        {
+            base.OnEndPage(writer, doc);
+            BaseColor grey = new BaseColor(128, 128, 128);
+            Font font = FontFactory.GetFont("Arial", 9, Font.NORMAL, grey);
+            //tbl footer
+            PdfPTable footerTbl = new PdfPTable(1);
+            footerTbl.TotalWidth = doc.PageSize.Width;
+
+            //numero de la page
+            Chunk myFooter = new Chunk(title, FontFactory.GetFont(FontFactory.HELVETICA_OBLIQUE, 8, grey));
+            PdfPCell footer = new PdfPCell(new Phrase(myFooter))
+            {
+                Border = Rectangle.NO_BORDER,
+                HorizontalAlignment = Element.ALIGN_CENTER
+            };
+            footerTbl.AddCell(footer);
+
+            footerTbl.WriteSelectedRows(0, -1, 0, (doc.BottomMargin - 5), writer.DirectContent);
+        }
+    }
+
     internal sealed class PdfFile : OutputFile
     {
         private PdfDocument pdf;
@@ -28,11 +59,12 @@ namespace LightNovelSniffer.Output
             this.currentLanguage = language;
 
             pdf = new PdfDocument(PageSize.A4);
-            pdf.AddAuthor(Globale.AUTHOR);
+            foreach (string author in lnParam.authors)
+                pdf.AddAuthor(author);
             pdf.AddCreationDate();
             pdf.AddLanguage(language);
             pdf.AddTitle(DocumentTitle);
-            pdf.AddCreator(Globale.AUTHOR);
+            pdf.AddCreator(Globale.CREATOR);
             pdfChapters = new List<Chapter>();
         }
 

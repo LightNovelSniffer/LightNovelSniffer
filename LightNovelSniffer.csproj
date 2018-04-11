@@ -78,7 +78,6 @@
     <Compile Include="Libs\DotNetEpub\NavPoint.cs" />
     <Compile Include="Libs\DotNetEpub\NCX.cs" />
     <Compile Include="Libs\DotNetEpub\Spine.cs" />
-    <Compile Include="Output\PdfFooterEvent.cs" />
     <Compile Include="Config\ConfigTools.cs" />
     <Compile Include="Config\Globale.cs" />
     <Compile Include="Web\LnChapter.cs" />
