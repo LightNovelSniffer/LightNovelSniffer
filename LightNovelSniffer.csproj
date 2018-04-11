@@ -84,6 +84,8 @@
   <ItemGroup>
     <Compile Include="Config\LnParameters.cs" />
     <Compile Include="Config\UrlParameter.cs" />
+    <Compile Include="Exception\DynamicParserException.cs" />
+    <Compile Include="Exception\ParserException.cs" />
     <Compile Include="ExtensionTools.cs" />
     <Compile Include="Libs\DotNetEpub\AppleIBooksDisplayOptions.cs" />
     <Compile Include="Libs\DotNetEpub\Container.cs" />
