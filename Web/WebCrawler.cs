@@ -22,7 +22,7 @@ namespace LightNovelSniffer.Web
 
         public void DownloadChapters(LnParameters ln, string language)
         {
-            output.Log(string.Format("Début {0} {1}", ln.name.ToUpper(), language.ToUpper()), 3);
+            output.Log(string.Format("Début {0} {1}", ln.name.ToUpper(), language.ToUpper()));
             UrlParameter urlParameter = ln.GetUrlParameter(language);
             int i = urlParameter.firstChapterNumber;
             PdfFile pdf =  new PdfFile(ln, language);
@@ -32,7 +32,7 @@ namespace LightNovelSniffer.Web
 
             if (parser == null)
             {
-                output.Log("Aucun parser disponible pour cette URL", 3);
+                output.Log("Aucun parser disponible pour cette URL");
                 return;
             }
 
@@ -49,7 +49,7 @@ namespace LightNovelSniffer.Web
                             , (urlParameter.lastChapterNumber > 0 
                                 ? urlParameter.lastChapterNumber.ToString() 
                                 : "?"))
-                        , 3);
+                        );
                     HtmlDocument page = new HtmlDocument();
                     page.LoadHtml(
                         Encoding.UTF8.GetString(
@@ -80,22 +80,22 @@ namespace LightNovelSniffer.Web
             
             if (lnChapters.Count == 0)
             {
-                output.Log("Aucun chapitre récupéré à cette URL", 3);
+                output.Log("Aucun chapitre récupéré à cette URL");
                 return;
             }
 
             pdf.AddChapters(lnChapters);
             epub.AddChapters(lnChapters);
 
-            output.Log("Ouverture du PDF", 3);
+            output.Log("Ouverture du PDF");
             pdf.SaveDocument();
-            output.Log("Fermeture du PDF", 3);
+            output.Log("Fermeture du PDF");
 
-            output.Log("Creation de l'ePub", 3);
+            output.Log("Creation de l'ePub");
             epub.SaveDocument();
-            output.Log("Fin de creation de l'ePub", 3);
+            output.Log("Fin de creation de l'ePub");
 
-            output.Log(string.Format("Fin {0} {1}", ln.name.ToUpper(), language.ToUpper()), 3);
+            output.Log(string.Format("Fin {0} {1}", ln.name.ToUpper(), language.ToUpper()));
         }
 
         public static byte[] DownloadCover(string urlCover)
