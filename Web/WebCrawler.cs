@@ -79,7 +79,7 @@ namespace LightNovelSniffer.Web
                         break;
                 } catch (System.Exception e)
                 {
-                    throw new ParserException(string.Format("Erreur lors du traitement de la page {0} par le parser {1}", currentUrl, parser.GetType().ToString()) ,e);
+                    throw new ParserException(string.Format("Erreur lors du traitement de la page {0} par le parser {1}", String.Format(baseUrl, i), parser.GetType().ToString()), e);
                 }
                 i++;
             }
