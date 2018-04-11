@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using HtmlAgilityPack;
 using LightNovelSniffer.Config;
+using LightNovelSniffer.Exception;
 using LightNovelSniffer.Libs;
 using LightNovelSniffer.Output;
 using LightNovelSniffer.Web.Parser;
@@ -14,10 +15,13 @@ namespace LightNovelSniffer.Web
     {
         private IOutput output;
         private IInput input;
+        private ParserFactory parserFactory;
+
         public WebCrawler(IOutput output, IInput input)
         {
             this.output = output;
             this.input = input;
+            this.parserFactory = new ParserFactory();
         }
 
         public void DownloadChapters(LnParameters ln, string language)
@@ -28,7 +32,7 @@ namespace LightNovelSniffer.Web
             PdfFile pdf =  new PdfFile(ln, language);
             EPubFile epub = new EPubFile(ln, language);
             string baseUrl = urlParameter.url;
-            IParser parser = ParserFactory.GetParser(baseUrl);
+            IParser parser = parserFactory.GetParser(baseUrl);
 
             if (parser == null)
             {
@@ -57,12 +61,11 @@ namespace LightNovelSniffer.Web
                                 currentUrl)));
 
                     LnChapter lnChapter = parser.Parse(page);
-
                     if (lnChapter == null || lnChapter.paragraphs.Count == 0)
                     {
                         throw new WebException();
                     }
-                    
+
                     lnChapter.chapNumber = i;
                     lnChapters.Add(lnChapter);
                 }
@@ -74,6 +77,9 @@ namespace LightNovelSniffer.Web
                                     "Le chapitre {0} ne semble pas exister. Voulez vous vérifier la présence du suivant ?",
                                     i)))
                         break;
+                } catch (System.Exception e)
+                {
+                    throw new ParserException(string.Format("Erreur lors du traitement de la page {0} par le parser {1}", currentUrl, parser.GetType().ToString()) ,e);
                 }
                 i++;
             }
