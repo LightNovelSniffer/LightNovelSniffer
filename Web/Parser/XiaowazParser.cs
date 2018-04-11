@@ -4,7 +4,7 @@ using HtmlAgilityPack;
 
 namespace LightNovelSniffer.Web.Parser
 {
-    internal class XiaowazParser : IParser
+    public class XiaowazParser : IParser
     {
         public bool CanParse(string url)
         {

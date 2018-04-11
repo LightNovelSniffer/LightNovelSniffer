@@ -5,11 +5,11 @@ namespace LightNovelSniffer.Web
 {
     public class LnChapter
     {
-        internal string title;
-        internal List<HtmlNode> paragraphs;
-        internal int chapNumber;
+        public string title;
+        public List<HtmlNode> paragraphs;
+        public int chapNumber;
 
-        internal LnChapter(string title, List<HtmlNode> paragraphs)
+        public LnChapter(string title, List<HtmlNode> paragraphs)
         {
             this.title = title;
             this.paragraphs = paragraphs;

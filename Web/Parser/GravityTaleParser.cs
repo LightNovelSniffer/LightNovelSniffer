@@ -6,7 +6,7 @@ using HtmlAgilityPack;
 
 namespace LightNovelSniffer.Web.Parser
 {
-    class GravityTaleParser : IParser
+    public class GravityTaleParser : IParser
     {
         public bool CanParse(string baseUrl)
         {
