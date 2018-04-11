@@ -23,7 +23,9 @@ namespace LightNovelSniffer.Output
             this.nbChapInEpub = 1;
 
             epub = new Document();
-            epub.AddAuthor(Globale.AUTHOR);
+            foreach (string author in lnParam.authors)
+                epub.AddAuthor(author);
+            epub.AddPublisher(Globale.PUBLISHER);
             epub.AddLanguage(language);
             epub.AddTitle(DocumentTitle);
 

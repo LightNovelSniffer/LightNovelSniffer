@@ -21,7 +21,7 @@ namespace LightNovelSniffer.Config
 
             XmlNode ofNode = xmlDoc.DocumentElement.SelectSingleNode("outputFolder");
             XmlNode imNode = xmlDoc.DocumentElement.SelectSingleNode("interactiveMode");
-            XmlNode authorNode = xmlDoc.DocumentElement.SelectSingleNode("author");
+            XmlNode publisherNode = xmlDoc.DocumentElement.SelectSingleNode("publisher");
             XmlNode dctNode = xmlDoc.DocumentElement.SelectSingleNode("defaultChapterTitle");
             XmlNode lnToRetrieveNode = xmlDoc.DocumentElement.SelectSingleNode("lnToRetrieve");
 
@@ -34,8 +34,8 @@ namespace LightNovelSniffer.Config
                     Globale.INTERACTIVE_MODE = true;
             }
 
-            if (authorNode != null)
-                Globale.AUTHOR = authorNode.InnerText;
+            if (publisherNode != null)
+                Globale.PUBLISHER = publisherNode.InnerText;
 
             if (dctNode != null)
                 Globale.DEFAULT_CHAPTER_TITLE = dctNode.InnerText;
@@ -52,13 +52,25 @@ namespace LightNovelSniffer.Config
 
                         XmlNode nameNode = ln.SelectSingleNode("name");
                         XmlNode coverNode = ln.SelectSingleNode("urlCover");
+                        XmlNode authorsListNode = ln.SelectSingleNode("authors");
+                        XmlNode versionsNode = ln.SelectSingleNode("versions");
 
                         if (nameNode != null)
                             lnParameter.name = nameNode.InnerText;
                         if (coverNode != null)
                             lnParameter.urlCover = coverNode.InnerText;
 
-                        XmlNode versionsNode = ln.SelectSingleNode("versions");
+                        if (authorsListNode != null)
+                        {    
+                            XmlNodeList authorNodes = authorsListNode.SelectNodes("author");
+                            if (authorNodes != null)
+                            {
+                                foreach(XmlNode authorNode in authorNodes)
+                                    lnParameter.authors.Add(authorNode.InnerText);
+                            }
+                        }
+
+                        
                         if (versionsNode != null)
                         {
                             foreach (XmlNode version in versionsNode.SelectNodes("version"))

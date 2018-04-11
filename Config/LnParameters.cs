@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LightNovelSniffer.Config
 {
@@ -7,10 +8,12 @@ namespace LightNovelSniffer.Config
         public string name;
         public string urlCover;
         public List<UrlParameter> urlParameters;
+        public List<string> authors;
 
         public LnParameters()
         {
             urlParameters = new List<UrlParameter>();
+            authors = new List<string>();
         }
 
         public UrlParameter GetUrlParameter(string language)

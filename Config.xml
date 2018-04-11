@@ -4,7 +4,7 @@
 
     <interactiveMode>true</interactiveMode>
     
-    <author>ARUS Joshua</author>
+    <publisher>ARUS Joshua</publisher>
     <defaultChapterTitle>Chapitre {0}</defaultChapterTitle>
     
     <lnToRetrieve>
@@ -12,6 +12,10 @@
         
         <ln>
             <name>Todag</name>
+            <authors>
+                <author>Mad Snail</author>
+                <author>发飙的蜗牛</author>
+            </authors>
             <urlCover>https://f01.mrcdn.info/file/mrportal/h/c/q/f/uC.icW3kgA3.jpg</urlCover>
             <versions>
                 <version>
@@ -31,6 +35,10 @@
         
         <ln>
             <name>Douluo Dalu</name>
+            <authors>
+                <author>Tang Jia San Shao</author>
+                <author>唐家三少</author>
+            </authors>
             <urlCover>http://heavenmanga.biz/content/upload/file/2018/02/27/soul-land-chap-205-page-1.jpg</urlCover>
             <versions>
                 <version>
@@ -42,11 +50,14 @@
             </versions>
         </ln>
         
-        -->
-        <!--
         
         <ln>
             <name>Btth</name>
+            <authors>
+                <author>Heavenly Silkworm Potato</author>
+                <author>Tian Can Tu Dou</author>
+                <author>天蚕土豆</author>
+            </authors>
             <urlCover>https://i2.wp.com/whitenovels.com/wp-content/uploads/2016/02/btth-2-1.jpg</urlCover>
             <versions>
                 <version>
@@ -68,13 +79,17 @@
         
         <ln>
             <name>KoG</name>
+            <authors>
+                <author>Fast Food Restaurant</author>
+                <author>快餐店</author>
+            </authors>
             <urlCover>https://images-na.ssl-images-amazon.com/images/I/41rw9LSfn1L.jpg</urlCover>
             <versions>
                 <version>
                     <url>http://gravitytales.com/Novel/king-of-gods/kog-chapter-{0}</url>
                     <language>EN</language>
-                    <firstChapterNumber>1</firstChapterNumber>
-                    <lastChapterNumber>10</lastChapterNumber>
+                    <firstChapterNumber></firstChapterNumber>
+                    <lastChapterNumber></lastChapterNumber>
                 </version>
             </versions>
         </ln>-->

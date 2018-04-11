@@ -64,7 +64,7 @@ namespace LightNovelSniffer.Output
             pdf.AddCreationDate();
             pdf.AddLanguage(language);
             pdf.AddTitle(DocumentTitle);
-            pdf.AddCreator(Globale.CREATOR);
+            pdf.AddCreator(Globale.PUBLISHER);
             pdfChapters = new List<Chapter>();
         }
 

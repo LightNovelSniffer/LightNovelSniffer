@@ -74,6 +74,10 @@ namespace LightNovelSniffer
             if (string.IsNullOrEmpty(ln.name))
                 return ln;
             ln.urlCover = ConsoleTools.AskInformation("URL de l'image de cover : ");
+            string authors = ConsoleTools.AskInformation("Auteurs (séparés par des virgules) : ");
+            if (!string.IsNullOrEmpty(authors))
+                foreach (string author in authors.Split(','))
+                    ln.authors.Add(author.Trim());
 
             do
             {
