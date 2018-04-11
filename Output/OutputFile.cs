@@ -5,7 +5,7 @@ using LightNovelSniffer.Web;
 
 namespace LightNovelSniffer.Output
 {
-    internal abstract class OutputFile
+    public abstract class OutputFile
     {
         protected LnParameters lnParameters;
         protected string currentLanguage;

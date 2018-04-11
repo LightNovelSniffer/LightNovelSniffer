@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace LightNovelSniffer.Config
 {
-    internal static class ConfigTools
+    public static class ConfigTools
     {
         private static string XML_NOEUD_RACINE = "Parameters";
 

@@ -1,6 +1,6 @@
 ﻿namespace LightNovelSniffer.Config
 {
-    internal class UrlParameter
+    public class UrlParameter
     {
         public string url;
         public string language;

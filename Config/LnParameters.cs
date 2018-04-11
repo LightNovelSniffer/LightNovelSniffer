@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LightNovelSniffer.Config
 {
-    internal class LnParameters
+    public class LnParameters
     {
         public string name;
         public string urlCover;

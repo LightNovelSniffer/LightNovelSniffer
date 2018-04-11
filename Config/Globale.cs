@@ -2,12 +2,12 @@
 
 namespace LightNovelSniffer.Config
 {
-    internal static class Globale
+    public static class Globale
     {
-        internal static string OUTPUT_FOLDER;
-        internal static bool INTERACTIVE_MODE;
-        internal static string PUBLISHER;
-        internal static string DEFAULT_CHAPTER_TITLE;
-        internal static List<LnParameters> LN_TO_RETRIEVE;
+        public static string OUTPUT_FOLDER;
+        public static bool INTERACTIVE_MODE;
+        public static string PUBLISHER;
+        public static string DEFAULT_CHAPTER_TITLE;
+        public static List<LnParameters> LN_TO_RETRIEVE;
     }
 }

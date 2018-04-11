@@ -3,7 +3,7 @@ using HtmlAgilityPack;
 
 namespace LightNovelSniffer.Web
 {
-    internal class LnChapter
+    public class LnChapter
     {
         internal string title;
         internal List<HtmlNode> paragraphs;

@@ -1,5 +1,7 @@
 # LightNovelSniffer
-C# .Net 4.0 Web crawler to create PDF and Epub version of online light novels
+C# .Net 4.0 Web crawler to create PDF and Epub version of online light novels.
+
+This is a core library. It will need a proper interface to work. For now, there is only a CLI available (https://github.com/JoshuaArus/LightNovelSniffer-CLI)
 
 ## Web parser
 Web parser use HtmlAgilityPack (https://www.nuget.org/packages/HtmlAgilityPack/1.4.9.5) to parse string to HtmlNodes.

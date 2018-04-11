@@ -2,7 +2,7 @@
 
 namespace LightNovelSniffer.Web.Parser
 {
-    interface IParser
+    public interface IParser
     {
         LnChapter Parse(HtmlDocument doc);
         bool CanParse(string url);

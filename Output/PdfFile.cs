@@ -42,7 +42,7 @@ namespace LightNovelSniffer.Output
         }
     }
 
-    internal sealed class PdfFile : OutputFile
+    public sealed class PdfFile : OutputFile
     {
         private PdfDocument pdf;
 

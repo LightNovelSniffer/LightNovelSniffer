@@ -6,7 +6,7 @@ using Document = LightNovelSniffer.Libs.DotNetEpub.Document;
 
 namespace LightNovelSniffer.Output
 {
-    internal sealed class EPubFile : OutputFile
+    public sealed class EPubFile : OutputFile
     {
         private Document epub;
         private int nbChapInEpub;
