@@ -32,6 +32,7 @@ namespace LightNovelSniffer.Libs.DotNetEpub
     {
         private string _title;
         private List<String> _authors;
+        private List<String> _publishers;
         private string _uid;
         private List<LightNovelSniffer.Libs.DotNetEpub.NavPoint> _navpoints;
         internal static XNamespace NcxNS = "http://www.daisy.org/z3986/2005/ncx/";
@@ -40,6 +41,7 @@ namespace LightNovelSniffer.Libs.DotNetEpub
         {
             _navpoints = new List<LightNovelSniffer.Libs.DotNetEpub.NavPoint>();
             _authors = new List<string>();
+            _publishers = new List<string>();
             _title = String.Empty;
         }
 
@@ -51,6 +53,11 @@ namespace LightNovelSniffer.Libs.DotNetEpub
         internal void AddAuthor(string author)
         {
             _authors.Add(author);
+        }
+
+        internal void AddPublisher(string publisher)
+        {
+            _publishers.Add(publisher);
         }
 
         internal void AddTitle(string title)
@@ -82,6 +89,12 @@ namespace LightNovelSniffer.Libs.DotNetEpub
             {
                 ncx.Add(new XElement(NcxNS + "docAuthor",
                     new XElement(NcxNS + "text", author)));
+            }
+
+            foreach (string publisher in _publishers)
+            {
+                ncx.Add(new XElement(NcxNS + "docPublisher",
+                    new XElement(NcxNS + "text", publisher)));
             }
 
             XElement navMap = new XElement(NcxNS + "navMap");

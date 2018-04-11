@@ -144,6 +144,15 @@ namespace LightNovelSniffer.Libs.DotNetEpub
             _ncx.AddAuthor(author);
         }
         /// <summary>
+        /// Add publisher of the document
+        /// </summary>
+        /// <param name="author">Human-readable full name</param>
+        public void AddPublisher(string publisher)
+        {
+            _metadata.AddPublisher(publisher);
+            _ncx.AddPublisher(publisher);
+        }
+        /// <summary>
         /// Add title to epub document
         /// </summary>
         /// <param name="title">document's title</param>

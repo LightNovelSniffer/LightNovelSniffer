@@ -38,6 +38,12 @@ namespace LightNovelSniffer.Libs.DotNetEpub
             AddCreator(name, "aut");
         }
 
+        internal void AddPublisher(string name)
+        {
+            DCItem dcitem = new DCItem("publisher", name);
+            _dcItems.Add(dcitem);
+        }
+
         internal void AddTranslator(string name)
         {
             AddCreator(name, "trl");
@@ -92,7 +98,7 @@ namespace LightNovelSniffer.Libs.DotNetEpub
             _dcItems.Add(dcitem);
         }
 
-        internal void AddCcontributor(string name, string role)
+        internal void AddContributor(string name, string role)
         {
             DCItem dcitem = new DCItem("contributor", name);
             dcitem.SetOpfAttribute("role", role);
