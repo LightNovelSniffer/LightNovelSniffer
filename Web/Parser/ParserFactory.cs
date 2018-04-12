@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -9,24 +10,26 @@ namespace LightNovelSniffer.Web.Parser
 {
     public class ParserFactory
     {
-        private static WuxiaworldParser wwParser;
-        private static XiaowazParser xiaowasParser;
-        private static GravityTaleParser gravityTaleParser;
-        private List<IParser> _availableParsers;
+        private static List<IParser> _registeredParsers;
 
         public ParserFactory()
         {
-            _availableParsers = new List<IParser> { GetWuxiaworldParser(), GetXiaowazParser(), GetGravityTaleParser() };
+            if (_registeredParsers == null)
+            {
+                _registeredParsers = new List<IParser>();
+                RegisterAllParserFromAssembly(GetType().Assembly.Location);//loading of all parsers existing in this project
+            }
         }
 
-        public ICollection<IParser> AvailableParsers
+        public ReadOnlyCollection<IParser> AvailableParsers
         {
-            get { return _availableParsers.AsReadOnly(); }
+            get { return _registeredParsers.AsReadOnly(); }
         }
 
         public void RegisterParser(IParser parser)
         {
-            _availableParsers.Add(parser);
+            if (!_registeredParsers.ContainsType(parser.GetType()))
+                _registeredParsers.Add(parser);
         }
 
         /// <summary>
@@ -46,10 +49,9 @@ namespace LightNovelSniffer.Web.Parser
 
             object instance = assembly.CreateInstance(parserClass);
             IParser parser = instance as IParser;
-            if (parser != null)
-                RegisterParser(parser);
-            else
+            if (parser == null)
                 throw new DynamicParserException(string.Format("Cannot instantiate {0} as a IParser", parserClass));
+            RegisterParser(parser);    
         }
 
         /// <summary>
@@ -73,31 +75,15 @@ namespace LightNovelSniffer.Web.Parser
             {
                 object instance = Activator.CreateInstance(type);
                 IParser parser = instance as IParser;
-                if (parser != null)
-                    RegisterParser(parser);
-                else
+                if (parser == null)
                     throw new DynamicParserException(string.Format("Cannot instantiate {0} as a IParser", type));
+                RegisterParser(parser);
             }
         }
 
         public IParser GetParser(string baseUrl)
         {
             return AvailableParsers.FirstOrDefault(parser => parser.CanParse(baseUrl));
-        }
-
-        public static WuxiaworldParser GetWuxiaworldParser()
-        {
-            return wwParser ?? (wwParser = new WuxiaworldParser());
-        }
-
-        public static XiaowazParser GetXiaowazParser()
-        {
-            return xiaowasParser ?? (xiaowasParser = new XiaowazParser());
-        }
-
-        public static GravityTaleParser GetGravityTaleParser()
-        {
-            return gravityTaleParser ?? (gravityTaleParser = new GravityTaleParser());
         }
     }
 }

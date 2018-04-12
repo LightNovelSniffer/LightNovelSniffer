@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using HtmlAgilityPack;
@@ -27,6 +29,11 @@ namespace LightNovelSniffer
         internal static bool ContainsInvarient(this string str, string recherche)
         {
             return str.ToLower().Contains(recherche.ToLower());
+        }
+
+        internal static bool ContainsType<T>(this IEnumerable<T> collection, Type type)
+        {
+            return collection.Any<T>(i => i.GetType() == type);
         }
     }
 }
