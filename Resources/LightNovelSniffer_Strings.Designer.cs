@@ -22,7 +22,7 @@ namespace LightNovelSniffer.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LightNovelSniffer_Strings {
+    public class LightNovelSniffer_Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace LightNovelSniffer.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LightNovelSniffer.Resources.LightNovelSniffer_Strings", typeof(LightNovelSniffer_Strings).Assembly);
@@ -51,7 +51,7 @@ namespace LightNovelSniffer.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Unable to download cover at {0}..
         /// </summary>
-        internal static string CoverDownloadExceptionMessage {
+        public static string CoverDownloadExceptionMessage {
             get {
                 return ResourceManager.GetString("CoverDownloadExceptionMessage", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cannot set the specified CultureInfo : {0}..
         /// </summary>
-        internal static string CultureInfoExceptionMessage {
+        public static string CultureInfoExceptionMessage {
             get {
                 return ResourceManager.GetString("CultureInfoExceptionMessage", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Specified CultureInfo is null..
         /// </summary>
-        internal static string CultureInfoNullExceptionMessage {
+        public static string CultureInfoNullExceptionMessage {
             get {
                 return ResourceManager.GetString("CultureInfoNullExceptionMessage", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Specified language is empty and cannot be used..
         /// </summary>
-        internal static string EmptyLanguageExceptionMessage {
+        public static string EmptyLanguageExceptionMessage {
             get {
                 return ResourceManager.GetString("EmptyLanguageExceptionMessage", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find assembly {0}..
         /// </summary>
-        internal static string FindAssemblyExceptionMessage {
+        public static string FindAssemblyExceptionMessage {
             get {
                 return ResourceManager.GetString("FindAssemblyExceptionMessage", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cannot instantiate CultrureInfo from language &quot;{0}&quot;..
         /// </summary>
-        internal static string GetCultureFromLanguageExceptionMessage {
+        public static string GetCultureFromLanguageExceptionMessage {
             get {
                 return ResourceManager.GetString("GetCultureFromLanguageExceptionMessage", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cannot instantiate {0} as a IParser..
         /// </summary>
-        internal static string InstantiateAssemblyExceptionMessage {
+        public static string InstantiateAssemblyExceptionMessage {
             get {
                 return ResourceManager.GetString("InstantiateAssemblyExceptionMessage", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cannot load assembly {0}..
         /// </summary>
-        internal static string LoadAssemblyExceptionMessage {
+        public static string LoadAssemblyExceptionMessage {
             get {
                 return ResourceManager.GetString("LoadAssemblyExceptionMessage", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Start of {0} {1}..
         /// </summary>
-        internal static string LogBeginLnLanguage {
+        public static string LogBeginLnLanguage {
             get {
                 return ResourceManager.GetString("LogBeginLnLanguage", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Chapter {0} doesn&apos;t seem to exist. Do you want to check for the following one ?.
         /// </summary>
-        internal static string LogChapterDoesntExist_AskForNext {
+        public static string LogChapterDoesntExist_AskForNext {
             get {
                 return ResourceManager.GetString("LogChapterDoesntExist_AskForNext", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to EPUB creation file ended..
         /// </summary>
-        internal static string LogClosingEpubFile {
+        public static string LogClosingEpubFile {
             get {
                 return ResourceManager.GetString("LogClosingEpubFile", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Closing PDF file..
         /// </summary>
-        internal static string LogClosingPdfFile {
+        public static string LogClosingPdfFile {
             get {
                 return ResourceManager.GetString("LogClosingPdfFile", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to End of {0} {1}..
         /// </summary>
-        internal static string LogEndLnLanguage {
+        public static string LogEndLnLanguage {
             get {
                 return ResourceManager.GetString("LogEndLnLanguage", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Error while processing URL {0} by the {1}..
         /// </summary>
-        internal static string LogErrorProcessingUrlByParser {
+        public static string LogErrorProcessingUrlByParser {
             get {
                 return ResourceManager.GetString("LogErrorProcessingUrlByParser", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to No chapter retrieved from this URL..
         /// </summary>
-        internal static string LogNoChapterAvailableAtThisUrl {
+        public static string LogNoChapterAvailableAtThisUrl {
             get {
                 return ResourceManager.GetString("LogNoChapterAvailableAtThisUrl", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to No parser available for this URL..
         /// </summary>
-        internal static string LogNoParserAvailable {
+        public static string LogNoParserAvailable {
             get {
                 return ResourceManager.GetString("LogNoParserAvailable", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Creating EPUB file..
         /// </summary>
-        internal static string LogOpeningEpubFile {
+        public static string LogOpeningEpubFile {
             get {
                 return ResourceManager.GetString("LogOpeningEpubFile", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Opening PDF file..
         /// </summary>
-        internal static string LogOpeningPdfFile {
+        public static string LogOpeningPdfFile {
             get {
                 return ResourceManager.GetString("LogOpeningPdfFile", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Retrieving {0}/{1}..
         /// </summary>
-        internal static string LogRetrieveChapterProgress {
+        public static string LogRetrieveChapterProgress {
             get {
                 return ResourceManager.GetString("LogRetrieveChapterProgress", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace LightNovelSniffer.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The file Config.xml cannot be read..
         /// </summary>
-        internal static string UnableToReadConfigFileExceptionMessage {
+        public static string UnableToReadConfigFileExceptionMessage {
             get {
                 return ResourceManager.GetString("UnableToReadConfigFileExceptionMessage", resourceCulture);
             }

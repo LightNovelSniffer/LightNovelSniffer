@@ -149,11 +149,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\LightNovelSniffer_Strings.fr.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LightNovelSniffer_Strings.fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\LightNovelSniffer_Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LightNovelSniffer_Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
