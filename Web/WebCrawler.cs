@@ -8,6 +8,7 @@ using LightNovelSniffer.Exception;
 using LightNovelSniffer.Libs;
 using LightNovelSniffer.Output;
 using LightNovelSniffer.Web.Parser;
+using LightNovelSniffer.Resources;
 
 namespace LightNovelSniffer.Web
 {
@@ -24,7 +25,7 @@ namespace LightNovelSniffer.Web
 
         public void DownloadChapters(LnParameters ln, string language)
         {
-            output.Log(string.Format(Resources.LightNovelSniffer_Strings.LogBeginLnLanguage, ln.name.ToUpper(), language.ToUpper()));
+            output.Log(string.Format(LightNovelSniffer_Strings.LogBeginLnLanguage, ln.name.ToUpper(), language.ToUpper()));
             UrlParameter urlParameter = ln.GetUrlParameter(language);
             int i = urlParameter.firstChapterNumber;
             PdfFile pdf =  new PdfFile(ln, language);

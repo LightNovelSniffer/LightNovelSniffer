@@ -27,11 +27,10 @@ namespace LightNovelSniffer.Config
                 try
                 {
                     ResourceSet rs = rm.GetResourceSet(culture, true, false);
-                    // or ResourceSet rs = rm.GetResourceSet(new CultureInfo(culture.TwoLetterISOLanguageName), true, false);
                     if (rs!=null)
                         res.Add(culture);
                 }
-                catch (CultureNotFoundException exc)
+                catch (CultureNotFoundException)
                 {
                 }
             }
@@ -52,7 +51,7 @@ namespace LightNovelSniffer.Config
         public static void SetLanguage(string language)
         {
             if (string.IsNullOrEmpty(language))
-                throw new LanguageException(Resources.LightNovelSniffer_Strings.EmptyLanguageExceptionMessage);
+                throw new LanguageException(LightNovelSniffer_Strings.EmptyLanguageExceptionMessage);
 
             try
             {
@@ -61,14 +60,14 @@ namespace LightNovelSniffer.Config
             }
             catch (CultureNotFoundException)
             {
-                throw new LanguageException(string.Format(Resources.LightNovelSniffer_Strings.GetCultureFromLanguageExceptionMessage, language));
+                throw new LanguageException(string.Format(LightNovelSniffer_Strings.GetCultureFromLanguageExceptionMessage, language));
             }
         }
 
         public static void SetLanguage(CultureInfo language)
         {
             if (language == null)
-                throw new LanguageException(Resources.LightNovelSniffer_Strings.CultureInfoNullExceptionMessage);
+                throw new LanguageException(LightNovelSniffer_Strings.CultureInfoNullExceptionMessage);
 
             try
             {
@@ -76,7 +75,7 @@ namespace LightNovelSniffer.Config
             }
             catch (System.Exception)
             {
-                throw new LanguageException(string.Format(Resources.LightNovelSniffer_Strings.CultureInfoExceptionMessage, language));
+                throw new LanguageException(string.Format(LightNovelSniffer_Strings.CultureInfoExceptionMessage, language));
             }
         }
 
@@ -92,7 +91,7 @@ namespace LightNovelSniffer.Config
             xmlDoc.Load(path + "\\Config.xml");
 
             if (xmlDoc.DocumentElement == null)
-                throw new ApplicationException(Resources.LightNovelSniffer_Strings.UnableToReadConfigFileExceptionMessage);
+                throw new ApplicationException(LightNovelSniffer_Strings.UnableToReadConfigFileExceptionMessage);
 
             XmlNode ofNode = xmlDoc.DocumentElement.SelectSingleNode("outputFolder");
             XmlNode imNode = xmlDoc.DocumentElement.SelectSingleNode("interactiveMode");

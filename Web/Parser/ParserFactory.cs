@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using LightNovelSniffer.Exception;
+using LightNovelSniffer.Resources;
 
 namespace LightNovelSniffer.Web.Parser
 {
@@ -40,17 +41,17 @@ namespace LightNovelSniffer.Web.Parser
         public void RegisterParserFromAssemblyDllAndClass(string assemblyPath, string parserClass)
         {
             if (!File.Exists(assemblyPath))
-                throw new DynamicParserException(string.Format(Resources.LightNovelSniffer_Strings.FindAssemblyExceptionMessage, assemblyPath));
+                throw new DynamicParserException(string.Format(LightNovelSniffer_Strings.FindAssemblyExceptionMessage, assemblyPath));
 
             Assembly assembly = Assembly.LoadFrom(assemblyPath);
 
             if (assembly == null)
-                throw new DynamicParserException(string.Format(Resources.LightNovelSniffer_Strings.LoadAssemblyExceptionMessage, assemblyPath));
+                throw new DynamicParserException(string.Format(LightNovelSniffer_Strings.LoadAssemblyExceptionMessage, assemblyPath));
 
             object instance = assembly.CreateInstance(parserClass);
             IParser parser = instance as IParser;
             if (parser == null)
-                throw new DynamicParserException(string.Format(Resources.LightNovelSniffer_Strings.InstantiateAssemblyExceptionMessage, parserClass));
+                throw new DynamicParserException(string.Format(LightNovelSniffer_Strings.InstantiateAssemblyExceptionMessage, parserClass));
             RegisterParser(parser);    
         }
 
@@ -61,12 +62,12 @@ namespace LightNovelSniffer.Web.Parser
         public void RegisterAllParserFromAssembly(string assemblyPath)
         {
             if (!File.Exists(assemblyPath))
-                throw new DynamicParserException(string.Format(Resources.LightNovelSniffer_Strings.FindAssemblyExceptionMessage, assemblyPath));
+                throw new DynamicParserException(string.Format(LightNovelSniffer_Strings.FindAssemblyExceptionMessage, assemblyPath));
 
             Assembly assembly = Assembly.LoadFrom(assemblyPath);
 
             if (assembly == null)
-                throw new DynamicParserException(string.Format(Resources.LightNovelSniffer_Strings.LoadAssemblyExceptionMessage, assemblyPath));
+                throw new DynamicParserException(string.Format(LightNovelSniffer_Strings.LoadAssemblyExceptionMessage, assemblyPath));
 
             
             IEnumerable<Type> types = assembly.GetExportedTypes().Where(x => x.IsClass && x.IsPublic && x.GetInterfaces().Contains(typeof(IParser)));
@@ -76,7 +77,7 @@ namespace LightNovelSniffer.Web.Parser
                 object instance = Activator.CreateInstance(type);
                 IParser parser = instance as IParser;
                 if (parser == null)
-                    throw new DynamicParserException(string.Format(Resources.LightNovelSniffer_Strings.InstantiateAssemblyExceptionMessage, type));
+                    throw new DynamicParserException(string.Format(LightNovelSniffer_Strings.InstantiateAssemblyExceptionMessage, type));
                 RegisterParser(parser);
             }
         }
