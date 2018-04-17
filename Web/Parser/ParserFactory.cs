@@ -40,17 +40,17 @@ namespace LightNovelSniffer.Web.Parser
         public void RegisterParserFromAssemblyDllAndClass(string assemblyPath, string parserClass)
         {
             if (!File.Exists(assemblyPath))
-                throw new DynamicParserException(string.Format("Cannot find assembly {0}", assemblyPath));
+                throw new DynamicParserException(string.Format(Resources.Strings.FindAssemblyExceptionMessage, assemblyPath));
 
             Assembly assembly = Assembly.LoadFrom(assemblyPath);
 
             if (assembly == null)
-                throw new DynamicParserException(string.Format("Cannot load assembly {0}", assemblyPath));
+                throw new DynamicParserException(string.Format(Resources.Strings.LoadAssemblyExceptionMessage, assemblyPath));
 
             object instance = assembly.CreateInstance(parserClass);
             IParser parser = instance as IParser;
             if (parser == null)
-                throw new DynamicParserException(string.Format("Cannot instantiate {0} as a IParser", parserClass));
+                throw new DynamicParserException(string.Format(Resources.Strings.InstantiateAssemblyExceptionMessage, parserClass));
             RegisterParser(parser);    
         }
 
@@ -61,12 +61,12 @@ namespace LightNovelSniffer.Web.Parser
         public void RegisterAllParserFromAssembly(string assemblyPath)
         {
             if (!File.Exists(assemblyPath))
-                throw new DynamicParserException(string.Format("Cannot find assembly {0}", assemblyPath));
+                throw new DynamicParserException(string.Format(Resources.Strings.FindAssemblyExceptionMessage, assemblyPath));
 
             Assembly assembly = Assembly.LoadFrom(assemblyPath);
 
             if (assembly == null)
-                throw new DynamicParserException(string.Format("Cannot load assembly {0}", assemblyPath));
+                throw new DynamicParserException(string.Format(Resources.Strings.LoadAssemblyExceptionMessage, assemblyPath));
 
             
             IEnumerable<Type> types = assembly.GetExportedTypes().Where(x => x.IsClass && x.IsPublic && x.GetInterfaces().Contains(typeof(IParser)));
@@ -76,7 +76,7 @@ namespace LightNovelSniffer.Web.Parser
                 object instance = Activator.CreateInstance(type);
                 IParser parser = instance as IParser;
                 if (parser == null)
-                    throw new DynamicParserException(string.Format("Cannot instantiate {0} as a IParser", type));
+                    throw new DynamicParserException(string.Format(Resources.Strings.InstantiateAssemblyExceptionMessage, type));
                 RegisterParser(parser);
             }
         }

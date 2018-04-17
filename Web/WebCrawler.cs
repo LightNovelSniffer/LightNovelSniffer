@@ -24,7 +24,7 @@ namespace LightNovelSniffer.Web
 
         public void DownloadChapters(LnParameters ln, string language)
         {
-            output.Log(string.Format("Début {0} {1}", ln.name.ToUpper(), language.ToUpper()));
+            output.Log(string.Format(Resources.Strings.LogBeginLnLanguage, ln.name.ToUpper(), language.ToUpper()));
             UrlParameter urlParameter = ln.GetUrlParameter(language);
             int i = urlParameter.firstChapterNumber;
             PdfFile pdf =  new PdfFile(ln, language);
@@ -34,7 +34,7 @@ namespace LightNovelSniffer.Web
 
             if (parser == null)
             {
-                output.Log("Aucun parser disponible pour cette URL");
+                output.Log(Resources.Strings.LogNoParserAvailable);
                 return;
             }
 
@@ -46,7 +46,7 @@ namespace LightNovelSniffer.Web
                 {
                     var currentUrl = String.Format(baseUrl, i);
                     output.Progress(
-                        string.Format("Récupération du chapitre {0}/{1}"
+                        string.Format(Resources.Strings.LogRetrieveChapterProgress
                             , i
                             , (urlParameter.lastChapterNumber > 0 
                                 ? urlParameter.lastChapterNumber.ToString() 
@@ -72,34 +72,34 @@ namespace LightNovelSniffer.Web
                     if (!Globale.INTERACTIVE_MODE ||
                             !input.Ask(
                                 string.Format(
-                                    "Le chapitre {0} ne semble pas exister. Voulez vous vérifier la présence du suivant ?",
+                                    Resources.Strings.LogChapterDoesntExist_AskForNext,
                                     i)))
                         break;
                 } catch (System.Exception e)
                 {
-                    throw new ParserException(string.Format("Erreur lors du traitement de la page {0} par le parser {1}", string.Format(baseUrl, i), parser.GetType()), e);
+                    throw new ParserException(string.Format(Resources.Strings.LogErrorProcessingUrlByParser, string.Format(baseUrl, i), parser.GetType()), e);
                 }
                 i++;
             }
             
             if (lnChapters.Count == 0)
             {
-                output.Log("Aucun chapitre récupéré à cette URL");
+                output.Log(Resources.Strings.LogNoChapterAvailableAtThisUrl);
                 return;
             }
 
             pdf.AddChapters(lnChapters);
             epub.AddChapters(lnChapters);
 
-            output.Log("Ouverture du PDF");
+            output.Log(Resources.Strings.LogOpeningPdfFile);
             pdf.SaveDocument();
-            output.Log("Fermeture du PDF");
+            output.Log(Resources.Strings.LogClosingPdfFile);
 
-            output.Log("Creation de l'ePub");
+            output.Log(Resources.Strings.LogOpeningEpubFile);
             epub.SaveDocument();
-            output.Log("Fin de creation de l'ePub");
+            output.Log(Resources.Strings.LogClosingEpubFile);
 
-            output.Log(string.Format("Fin {0} {1}", ln.name.ToUpper(), language.ToUpper()));
+            output.Log(string.Format(Resources.Strings.LogEndLnLanguage, ln.name.ToUpper(), language.ToUpper()));
         }
 
         public static byte[] DownloadCover(string urlCover)
@@ -114,7 +114,7 @@ namespace LightNovelSniffer.Web
                 {
                     if (ex is UriFormatException || ex is WebException)
                     {
-                        throw new CoverException(string.Format("Impossible de télécharger la cover {0}", urlCover));
+                        throw new CoverException(string.Format(Resources.Strings.CoverDownloadExceptionMessage, urlCover));
                     }
 
                     throw;
