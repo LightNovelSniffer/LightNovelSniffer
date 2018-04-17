@@ -35,7 +35,7 @@ namespace LightNovelSniffer.Web
 
             if (parser == null)
             {
-                output.Log(Resources.LightNovelSniffer_Strings.LogNoParserAvailable);
+                output.Log(LightNovelSniffer_Strings.LogNoParserAvailable);
                 return;
             }
 
@@ -47,7 +47,7 @@ namespace LightNovelSniffer.Web
                 {
                     var currentUrl = String.Format(baseUrl, i);
                     output.Progress(
-                        string.Format(Resources.LightNovelSniffer_Strings.LogRetrieveChapterProgress
+                        string.Format(LightNovelSniffer_Strings.LogRetrieveChapterProgress
                             , i
                             , (urlParameter.lastChapterNumber > 0 
                                 ? urlParameter.lastChapterNumber.ToString() 
@@ -73,34 +73,34 @@ namespace LightNovelSniffer.Web
                     if (!Globale.INTERACTIVE_MODE ||
                             !input.Ask(
                                 string.Format(
-                                    Resources.LightNovelSniffer_Strings.LogChapterDoesntExist_AskForNext,
+                                    LightNovelSniffer_Strings.LogChapterDoesntExist_AskForNext,
                                     i)))
                         break;
                 } catch (System.Exception e)
                 {
-                    throw new ParserException(string.Format(Resources.LightNovelSniffer_Strings.LogErrorProcessingUrlByParser, string.Format(baseUrl, i), parser.GetType()), e);
+                    throw new ParserException(string.Format(LightNovelSniffer_Strings.LogErrorProcessingUrlByParser, string.Format(baseUrl, i), parser.GetType()), e);
                 }
                 i++;
             }
             
             if (lnChapters.Count == 0)
             {
-                output.Log(Resources.LightNovelSniffer_Strings.LogNoChapterAvailableAtThisUrl);
+                output.Log(LightNovelSniffer_Strings.LogNoChapterAvailableAtThisUrl);
                 return;
             }
 
             pdf.AddChapters(lnChapters);
             epub.AddChapters(lnChapters);
 
-            output.Log(Resources.LightNovelSniffer_Strings.LogOpeningPdfFile);
+            output.Log(LightNovelSniffer_Strings.LogOpeningPdfFile);
             pdf.SaveDocument();
-            output.Log(Resources.LightNovelSniffer_Strings.LogClosingPdfFile);
+            output.Log(LightNovelSniffer_Strings.LogClosingPdfFile);
 
-            output.Log(Resources.LightNovelSniffer_Strings.LogOpeningEpubFile);
+            output.Log(LightNovelSniffer_Strings.LogOpeningEpubFile);
             epub.SaveDocument();
-            output.Log(Resources.LightNovelSniffer_Strings.LogClosingEpubFile);
+            output.Log(LightNovelSniffer_Strings.LogClosingEpubFile);
 
-            output.Log(string.Format(Resources.LightNovelSniffer_Strings.LogEndLnLanguage, ln.name.ToUpper(), language.ToUpper()));
+            output.Log(string.Format(LightNovelSniffer_Strings.LogEndLnLanguage, ln.name.ToUpper(), language.ToUpper()));
         }
 
         public static byte[] DownloadCover(string urlCover)
@@ -115,7 +115,7 @@ namespace LightNovelSniffer.Web
                 {
                     if (ex is UriFormatException || ex is WebException)
                     {
-                        throw new CoverException(string.Format(Resources.LightNovelSniffer_Strings.CoverDownloadExceptionMessage, urlCover));
+                        throw new CoverException(string.Format(LightNovelSniffer_Strings.CoverDownloadExceptionMessage, urlCover));
                     }
 
                     throw;
