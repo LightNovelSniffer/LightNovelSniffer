@@ -98,15 +98,15 @@
     <Compile Include="Config\Globale.cs" />
     <Compile Include="Libs\IInput.cs" />
     <Compile Include="Libs\IOutput.cs" />
-    <Compile Include="Resources\Strings.fr-FR.Designer.cs">
-      <DependentUpon>Strings.fr-FR.resx</DependentUpon>
+    <Compile Include="Resources\LightNovelSniffer_Strings.fr.Designer.cs">
+      <DependentUpon>LightNovelSniffer_Strings.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Strings.Designer.cs">
+    <Compile Include="Resources\LightNovelSniffer_Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
+      <DependentUpon>LightNovelSniffer_Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Web\LnChapter.cs" />
     <Compile Include="Web\Parser\GravityTaleParser.cs" />
@@ -148,13 +148,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Strings.fr-FR.resx">
+    <EmbeddedResource Include="Resources\LightNovelSniffer_Strings.fr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.fr-FR.Designer.cs</LastGenOutput>
+      <LastGenOutput>LightNovelSniffer_Strings.fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Strings.resx">
+    <EmbeddedResource Include="Resources\LightNovelSniffer_Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <LastGenOutput>LightNovelSniffer_Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -22,14 +22,14 @@ namespace LightNovelSniffer.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    internal class LightNovelSniffer_Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings() {
+        internal LightNovelSniffer_Strings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace LightNovelSniffer.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LightNovelSniffer.Resources.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LightNovelSniffer.Resources.LightNovelSniffer_Strings", typeof(LightNovelSniffer_Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to download cover at {0}.
+        ///   Looks up a localized string similar to Unable to download cover at {0}..
         /// </summary>
         internal static string CoverDownloadExceptionMessage {
             get {
@@ -70,7 +70,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot set the specified CultureInfo : {0}.
+        ///   Looks up a localized string similar to Cannot set the specified CultureInfo : {0}..
         /// </summary>
         internal static string CultureInfoExceptionMessage {
             get {
@@ -79,7 +79,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specified CultureInfo is null.
+        ///   Looks up a localized string similar to Specified CultureInfo is null..
         /// </summary>
         internal static string CultureInfoNullExceptionMessage {
             get {
@@ -88,7 +88,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specified language is empty and cannot be used.
+        ///   Looks up a localized string similar to Specified language is empty and cannot be used..
         /// </summary>
         internal static string EmptyLanguageExceptionMessage {
             get {
@@ -97,7 +97,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find assembly {0}.
+        ///   Looks up a localized string similar to Cannot find assembly {0}..
         /// </summary>
         internal static string FindAssemblyExceptionMessage {
             get {
@@ -106,7 +106,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot instantiate CultrureInfo from language &quot;{0}&quot;.
+        ///   Looks up a localized string similar to Cannot instantiate CultrureInfo from language &quot;{0}&quot;..
         /// </summary>
         internal static string GetCultureFromLanguageExceptionMessage {
             get {
@@ -115,7 +115,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot instantiate {0} as a IParser.
+        ///   Looks up a localized string similar to Cannot instantiate {0} as a IParser..
         /// </summary>
         internal static string InstantiateAssemblyExceptionMessage {
             get {
@@ -124,7 +124,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot load assembly {0}.
+        ///   Looks up a localized string similar to Cannot load assembly {0}..
         /// </summary>
         internal static string LoadAssemblyExceptionMessage {
             get {
@@ -133,7 +133,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start of {0} {1}.
+        ///   Looks up a localized string similar to Start of {0} {1}..
         /// </summary>
         internal static string LogBeginLnLanguage {
             get {
@@ -151,7 +151,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EPUB creation file ended.
+        ///   Looks up a localized string similar to EPUB creation file ended..
         /// </summary>
         internal static string LogClosingEpubFile {
             get {
@@ -160,7 +160,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Closing PDF file.
+        ///   Looks up a localized string similar to Closing PDF file..
         /// </summary>
         internal static string LogClosingPdfFile {
             get {
@@ -169,7 +169,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to End of {0} {1}.
+        ///   Looks up a localized string similar to End of {0} {1}..
         /// </summary>
         internal static string LogEndLnLanguage {
             get {
@@ -178,7 +178,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error while processing URL {0} by the {1}.
+        ///   Looks up a localized string similar to Error while processing URL {0} by the {1}..
         /// </summary>
         internal static string LogErrorProcessingUrlByParser {
             get {
@@ -187,7 +187,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No chapter retrieved from this URL.
+        ///   Looks up a localized string similar to No chapter retrieved from this URL..
         /// </summary>
         internal static string LogNoChapterAvailableAtThisUrl {
             get {
@@ -196,7 +196,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No parser available for this URL.
+        ///   Looks up a localized string similar to No parser available for this URL..
         /// </summary>
         internal static string LogNoParserAvailable {
             get {
@@ -205,7 +205,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating EPUB file.
+        ///   Looks up a localized string similar to Creating EPUB file..
         /// </summary>
         internal static string LogOpeningEpubFile {
             get {
@@ -214,7 +214,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opening PDF file.
+        ///   Looks up a localized string similar to Opening PDF file..
         /// </summary>
         internal static string LogOpeningPdfFile {
             get {
@@ -223,7 +223,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieving {0}/{1}.
+        ///   Looks up a localized string similar to Retrieving {0}/{1}..
         /// </summary>
         internal static string LogRetrieveChapterProgress {
             get {
@@ -232,7 +232,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The file Config.xml cannot be read.
+        ///   Looks up a localized string similar to The file Config.xml cannot be read..
         /// </summary>
         internal static string UnableToReadConfigFileExceptionMessage {
             get {

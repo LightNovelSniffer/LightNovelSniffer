@@ -3,14 +3,46 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Xml;
 using System.Globalization;
+using System.Resources;
 using System.util;
 using LightNovelSniffer.Exception;
+using LightNovelSniffer.Resources;
 
 namespace LightNovelSniffer.Config
 {
     public static class ConfigTools
     {
         private static string XML_NOEUD_RACINE = "Parameters";
+
+        public static ICollection<CultureInfo> GetAvailableLanguage()
+        {
+            List<CultureInfo> res = new List<CultureInfo>();
+
+            ResourceManager rm = new ResourceManager(typeof(LightNovelSniffer_Strings));
+
+            foreach (CultureInfo culture in CultureInfo.GetCultures(CultureTypes.AllCultures))
+            {
+                if (culture.ThreeLetterWindowsLanguageName.Equals("IVL"))
+                    continue;
+                try
+                {
+                    ResourceSet rs = rm.GetResourceSet(culture, true, false);
+                    // or ResourceSet rs = rm.GetResourceSet(new CultureInfo(culture.TwoLetterISOLanguageName), true, false);
+                    if (rs!=null)
+                        res.Add(culture);
+                }
+                catch (CultureNotFoundException exc)
+                {
+                }
+            }
+
+            CultureInfo en = CultureInfo.GetCultureInfo("en");
+
+            if (!res.Contains(en))
+                res.Add(en);
+
+            return res;
+        }
 
         public static CultureInfo GetCurrentLanguage()
         {
@@ -20,7 +52,7 @@ namespace LightNovelSniffer.Config
         public static void SetLanguage(string language)
         {
             if (string.IsNullOrEmpty(language))
-                throw new LanguageException(Resources.Strings.EmptyLanguageExceptionMessage);
+                throw new LanguageException(Resources.LightNovelSniffer_Strings.EmptyLanguageExceptionMessage);
 
             try
             {
@@ -29,14 +61,14 @@ namespace LightNovelSniffer.Config
             }
             catch (CultureNotFoundException)
             {
-                throw new LanguageException(string.Format(Resources.Strings.GetCultureFromLanguageExceptionMessage, language));
+                throw new LanguageException(string.Format(Resources.LightNovelSniffer_Strings.GetCultureFromLanguageExceptionMessage, language));
             }
         }
 
         public static void SetLanguage(CultureInfo language)
         {
             if (language == null)
-                throw new LanguageException(Resources.Strings.CultureInfoNullExceptionMessage);
+                throw new LanguageException(Resources.LightNovelSniffer_Strings.CultureInfoNullExceptionMessage);
 
             try
             {
@@ -44,7 +76,7 @@ namespace LightNovelSniffer.Config
             }
             catch (System.Exception)
             {
-                throw new LanguageException(string.Format(Resources.Strings.CultureInfoExceptionMessage, language));
+                throw new LanguageException(string.Format(Resources.LightNovelSniffer_Strings.CultureInfoExceptionMessage, language));
             }
         }
 
@@ -60,7 +92,7 @@ namespace LightNovelSniffer.Config
             xmlDoc.Load(path + "\\Config.xml");
 
             if (xmlDoc.DocumentElement == null)
-                throw new ApplicationException(Resources.Strings.UnableToReadConfigFileExceptionMessage);
+                throw new ApplicationException(Resources.LightNovelSniffer_Strings.UnableToReadConfigFileExceptionMessage);
 
             XmlNode ofNode = xmlDoc.DocumentElement.SelectSingleNode("outputFolder");
             XmlNode imNode = xmlDoc.DocumentElement.SelectSingleNode("interactiveMode");

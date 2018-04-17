@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CoverDownloadExceptionMessage" xml:space="preserve">
-    <value>Unable to download cover at {0}</value>
+    <value>Impossible de télécharger la cover {0}.</value>
   </data>
   <data name="CultureInfoExceptionMessage" xml:space="preserve">
-    <value>Cannot set the specified CultureInfo : {0}</value>
+    <value>Impossible d'utiliser la CultureInfo {0}.</value>
   </data>
   <data name="CultureInfoNullExceptionMessage" xml:space="preserve">
-    <value>Specified CultureInfo is null</value>
+    <value>La CultureInfo spécifiée est NULL.</value>
   </data>
   <data name="EmptyLanguageExceptionMessage" xml:space="preserve">
-    <value>Specified language is empty and cannot be used</value>
+    <value>Le language spécifié est vide.</value>
   </data>
   <data name="FindAssemblyExceptionMessage" xml:space="preserve">
-    <value>Cannot find assembly {0}</value>
+    <value>Impossible de trouver l'assembly {0}.</value>
   </data>
   <data name="GetCultureFromLanguageExceptionMessage" xml:space="preserve">
-    <value>Cannot instantiate CultrureInfo from language "{0}"</value>
+    <value>Impossible d'instantier la CultureInfo à partir du code "{0}".</value>
   </data>
   <data name="InstantiateAssemblyExceptionMessage" xml:space="preserve">
-    <value>Cannot instantiate {0} as a IParser</value>
+    <value>Impossible d'instantier {0} comme un IParser.</value>
   </data>
   <data name="LoadAssemblyExceptionMessage" xml:space="preserve">
-    <value>Cannot load assembly {0}</value>
+    <value>Impossible de charger l'assembly {0}.</value>
   </data>
   <data name="LogBeginLnLanguage" xml:space="preserve">
-    <value>Start of {0} {1}</value>
+    <value>Début de {0} {1}.</value>
   </data>
   <data name="LogChapterDoesntExist_AskForNext" xml:space="preserve">
-    <value>Chapter {0} doesn't seem to exist. Do you want to check for the following one ?</value>
+    <value>Le chapitre {0} ne semble pas exister. Voulez vous vérifier la présence du chapitre suivant ?</value>
   </data>
   <data name="LogClosingEpubFile" xml:space="preserve">
-    <value>EPUB creation file ended</value>
+    <value>Fin de création de l'EPUB.</value>
   </data>
   <data name="LogClosingPdfFile" xml:space="preserve">
-    <value>Closing PDF file</value>
+    <value>Fermeture du PDF.</value>
   </data>
   <data name="LogEndLnLanguage" xml:space="preserve">
-    <value>End of {0} {1}</value>
+    <value>Fin de {0} {1}.</value>
   </data>
   <data name="LogErrorProcessingUrlByParser" xml:space="preserve">
-    <value>Error while processing URL {0} by the {1}</value>
+    <value>Erreur lors du traitement de la page {0} par le parser {1}.</value>
   </data>
   <data name="LogNoChapterAvailableAtThisUrl" xml:space="preserve">
-    <value>No chapter retrieved from this URL</value>
+    <value>Pas de chapitre récupéré à cette URL.</value>
   </data>
   <data name="LogNoParserAvailable" xml:space="preserve">
-    <value>No parser available for this URL</value>
+    <value>Pas de parser existant pour cette URL.</value>
   </data>
   <data name="LogOpeningEpubFile" xml:space="preserve">
-    <value>Creating EPUB file</value>
+    <value>Création du fichier EPUB.</value>
   </data>
   <data name="LogOpeningPdfFile" xml:space="preserve">
-    <value>Opening PDF file</value>
+    <value>Ouverture du PDF.</value>
   </data>
   <data name="LogRetrieveChapterProgress" xml:space="preserve">
-    <value>Retrieving {0}/{1}</value>
+    <value>Chapitre {0}/{1}.</value>
   </data>
   <data name="UnableToReadConfigFileExceptionMessage" xml:space="preserve">
-    <value>The file Config.xml cannot be read</value>
+    <value>La fichier Config.xml ne peut pas être lu.</value>
   </data>
 </root>
