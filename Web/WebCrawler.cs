@@ -53,11 +53,21 @@ namespace LightNovelSniffer.Web
                                 ? urlParameter.lastChapterNumber.ToString() 
                                 : "?"))
                         );
+
+                    byte[] pageContent = null;
+
+                    try
+                    {
+                        pageContent = new WebClient().DownloadData(currentUrl);
+                    }
+                    catch (WebException e)
+                    {
+                        if (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.NotFound)
+                            throw new NotExistingChapterException();
+                    }
+
                     HtmlDocument page = new HtmlDocument();
-                    page.LoadHtml(
-                        Encoding.UTF8.GetString(
-                            new WebClient().DownloadData(
-                                currentUrl)));
+                    page.LoadHtml(Encoding.UTF8.GetString(pageContent));
 
                     LnChapter lnChapter = parser.Parse(page);
                     if (lnChapter == null || lnChapter.paragraphs.Count == 0)
