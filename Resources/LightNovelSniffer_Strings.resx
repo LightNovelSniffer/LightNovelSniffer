@@ -172,7 +172,7 @@
     <value>Opening PDF file.</value>
   </data>
   <data name="LogRetrieveChapterProgress" xml:space="preserve">
-    <value>Retrieving {0}/{1}.</value>
+    <value>Retrieving {0}/{1}</value>
   </data>
   <data name="UnableToReadConfigFileExceptionMessage" xml:space="preserve">
     <value>The file Config.xml cannot be read.</value>
