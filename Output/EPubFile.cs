@@ -44,10 +44,11 @@ namespace LightNovelSniffer.Output
                 
                 epub.AddImageData(coverFilename, cover);
                 epub.AddMetaItem("cover", coverFilename);
+                epub.AddImageData("." + coverFilename, cover);
+                epub.AddMetaItem(".cover", coverFilename);
             }
         }
 
-        //   <meta name="cover" content="cover-image" />
         public override void AddChapter(LnChapter lnChapter)
         {
             lnChapter.title = string.IsNullOrEmpty(lnChapter.title)
@@ -84,7 +85,7 @@ namespace LightNovelSniffer.Output
 <meta name=""EPB-UUID"" content="""" />
 <style>p {padding-top: 10px; }</style>
 </head>
-<body>" + chapterTitle + "</h2>";
+<body><h2>" + chapterTitle + "</h2>";
         }
 
         private string GetFooter()
