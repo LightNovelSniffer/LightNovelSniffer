@@ -28,7 +28,7 @@ namespace LightNovelSniffer.Output
             epub.AddPublisher(Globale.PUBLISHER);
             epub.AddLanguage(language);
             epub.AddTitle(DocumentTitle);
-
+            
             if (!string.IsNullOrEmpty(lnParam.urlCover))
             {
                 AddCover();
@@ -57,7 +57,7 @@ namespace LightNovelSniffer.Output
 
             string content = 
                 GetHeader(lnParameters.name, lnChapter.title) 
-                + string.Join("\r\n", lnChapter.paragraphs.Select(p => p.OuterHtml.Replace("<br>", "").Replace("<hr>", ""))) 
+                + string.Join("\r\n", lnChapter.paragraphs.Select(p => p.OuterHtml.Replace("<br>", "<br/>").Replace("<hr>", "<hr/>"))) 
                 + GetFooter();
             string chapFilename = "chap" + nbChapInEpub + ".html";
             
@@ -83,9 +83,11 @@ namespace LightNovelSniffer.Output
 <title>" + lnTitle + @"</title>
 <meta http-equiv=""Content-Type"" content=""application/xhtml+xml; charset=utf-8"" />
 <meta name=""EPB-UUID"" content="""" />
-<style>p {padding-top: 10px; }</style>
+<style type=""text/css"">p { padding-top: 10px; }</style>
 </head>
-<body><h2>" + chapterTitle + "</h2>";
+<body>
+<h2>" + chapterTitle + "</h2>" +
+"";
         }
 
         private string GetFooter()
