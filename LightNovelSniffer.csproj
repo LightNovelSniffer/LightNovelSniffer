@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="Web\LnChapter.cs" />
     <Compile Include="Web\Parser\GravityTaleParser.cs" />
+    <Compile Include="Web\Parser\ReadLightNovelParser.cs" />
     <Compile Include="Web\WebCrawler.cs" />
     <Compile Include="Output\EPubFile.cs" />
     <Compile Include="Output\OutputFile.cs" />
