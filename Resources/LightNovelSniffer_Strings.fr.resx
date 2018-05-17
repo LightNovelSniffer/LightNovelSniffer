@@ -175,6 +175,9 @@
     <value>Chapitre {0}/{1}</value>
   </data>
   <data name="UnableToReadConfigFileExceptionMessage" xml:space="preserve">
-    <value>La fichier Config.xml ne peut pas être lu.</value>
+    <value>Le fichier Config.xml ne peut pas être lu.</value>
+  </data>
+  <data name="UnableToReadLightNovelsFileExceptionMessage" xml:space="preserve">
+    <value>Le fichier LightNovels.xml ne peut pas être lu.</value>
   </data>
 </root>

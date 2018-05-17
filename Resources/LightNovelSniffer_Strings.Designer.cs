@@ -223,7 +223,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieving {0}/{1}..
+        ///   Looks up a localized string similar to Retrieving {0}/{1}.
         /// </summary>
         public static string LogRetrieveChapterProgress {
             get {
@@ -237,6 +237,15 @@ namespace LightNovelSniffer.Resources {
         public static string UnableToReadConfigFileExceptionMessage {
             get {
                 return ResourceManager.GetString("UnableToReadConfigFileExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file LightNovels.xml cannot be read..
+        /// </summary>
+        public static string UnableToReadLightNovelsFileExceptionMessage {
+            get {
+                return ResourceManager.GetString("UnableToReadLightNovelsFileExceptionMessage", resourceCulture);
             }
         }
     }

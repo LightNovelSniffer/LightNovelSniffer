@@ -177,4 +177,7 @@
   <data name="UnableToReadConfigFileExceptionMessage" xml:space="preserve">
     <value>The file Config.xml cannot be read.</value>
   </data>
+  <data name="UnableToReadLightNovelsFileExceptionMessage" xml:space="preserve">
+    <value>The file LightNovels.xml cannot be read.</value>
+  </data>
 </root>

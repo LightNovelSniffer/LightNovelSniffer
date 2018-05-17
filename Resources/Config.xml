@@ -7,28 +7,10 @@ YOU HAVE TO COPY IT TO YOUR CLIENT (CLI OR GUI)
 
 
 -->
+
 <Parameters>
     <outputFolder>c:\</outputFolder>
     <interactiveMode>true</interactiveMode>
     <publisher>ARUS Joshua</publisher>
     <defaultChapterTitle>Chapitre {0}</defaultChapterTitle>
-    
-    <lnToRetrieve>
-        <ln>
-            <name>test</name>
-            <authors>
-                <author>author 1</author>
-                <author>author 2</author>
-            </authors>
-            <urlCover>http://google.com/image.jpg</urlCover>
-            <versions>
-                <version>
-                    <url>http://google.com/Novel/chapter-{0}</url>
-                    <language>EN</language>
-                    <firstChapterNumber>1</firstChapterNumber>
-                    <lastChapterNumber>10</lastChapterNumber>
-                </version>
-            </versions>
-        </ln>
-    </lnToRetrieve>
 </Parameters>

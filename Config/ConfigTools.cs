@@ -12,8 +12,6 @@ namespace LightNovelSniffer.Config
 {
     public static class ConfigTools
     {
-        private static string XML_NOEUD_RACINE = "Parameters";
-
         public static ICollection<CultureInfo> GetAvailableLanguage()
         {
             List<CultureInfo> res = new List<CultureInfo>();
@@ -79,6 +77,88 @@ namespace LightNovelSniffer.Config
             }
         }
 
+        public static void InitLightNovels(CultureInfo language = null)
+        {
+            if (language != null)
+                SetLanguage(language);
+
+            string path = System.IO.Path.GetDirectoryName(
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+            XmlDocument lnXml = new XmlDocument();
+            lnXml.Load(path + "\\LightNovels.xml");
+
+            if (lnXml.DocumentElement == null)
+                throw new ApplicationException(LightNovelSniffer_Strings.UnableToReadLightNovelsFileExceptionMessage);
+
+            Globale.LN_TO_RETRIEVE = new List<LnParameters>();
+
+            XmlNodeList lnNodes = lnXml.DocumentElement.SelectNodes("ln");
+            if (lnNodes != null)
+            {
+                foreach (XmlNode ln in lnNodes)
+                {
+                    LnParameters lnParameter = new LnParameters();
+
+                    XmlNode nameNode = ln.SelectSingleNode("name");
+                    XmlNode coverNode = ln.SelectSingleNode("urlCover");
+                    XmlNode authorsListNode = ln.SelectSingleNode("authors");
+                    XmlNode versionsNode = ln.SelectSingleNode("versions");
+
+                    if (nameNode != null)
+                        lnParameter.name = nameNode.InnerText;
+                    if (coverNode != null)
+                        lnParameter.urlCover = coverNode.InnerText;
+
+                    if (authorsListNode != null)
+                    {
+                        XmlNodeList authorNodes = authorsListNode.SelectNodes("author");
+                        if (authorNodes != null)
+                        {
+                            foreach (XmlNode authorNode in authorNodes)
+                                lnParameter.authors.Add(authorNode.InnerText);
+                        }
+                    }
+
+
+                    if (versionsNode != null)
+                    {
+                        foreach (XmlNode version in versionsNode.SelectNodes("version"))
+                        {
+                            UrlParameter up = new UrlParameter();
+
+                            XmlNode urlNode = version.SelectSingleNode("url");
+                            XmlNode languageNode = version.SelectSingleNode("language");
+                            XmlNode fcNode = version.SelectSingleNode("firstChapterNumber");
+                            XmlNode lcNode = version.SelectSingleNode("lastChapterNumber");
+
+                            if (urlNode != null)
+                                up.url = urlNode.InnerText;
+
+                            if (languageNode != null)
+                                up.language = languageNode.InnerText;
+
+                            if (fcNode != null)
+                            {
+                                if (!int.TryParse(fcNode.InnerText, out up.firstChapterNumber))
+                                    up.firstChapterNumber = 1;
+                            }
+
+                            if (lcNode != null)
+                            {
+                                if (!int.TryParse(lcNode.InnerText, out up.lastChapterNumber))
+                                    up.lastChapterNumber = -1;
+                            }
+
+                            lnParameter.urlParameters.Add(up);
+                        }
+                    }
+
+                    Globale.LN_TO_RETRIEVE.Add(lnParameter);
+                }
+            }
+        }
+
         public static void InitConf(CultureInfo language = null)
         {
             if (language != null)
@@ -87,18 +167,17 @@ namespace LightNovelSniffer.Config
             string path = System.IO.Path.GetDirectoryName(
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
 
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(path + "\\Config.xml");
+            XmlDocument configXml = new XmlDocument();
+            configXml.Load(path + "\\Config.xml");
 
-            if (xmlDoc.DocumentElement == null)
+            if (configXml.DocumentElement == null)
                 throw new ApplicationException(LightNovelSniffer_Strings.UnableToReadConfigFileExceptionMessage);
 
-            XmlNode ofNode = xmlDoc.DocumentElement.SelectSingleNode("outputFolder");
-            XmlNode imNode = xmlDoc.DocumentElement.SelectSingleNode("interactiveMode");
-            XmlNode publisherNode = xmlDoc.DocumentElement.SelectSingleNode("publisher");
-            XmlNode dctNode = xmlDoc.DocumentElement.SelectSingleNode("defaultChapterTitle");
-            XmlNode lnToRetrieveNode = xmlDoc.DocumentElement.SelectSingleNode("lnToRetrieve");
-
+            XmlNode ofNode = configXml.DocumentElement.SelectSingleNode("outputFolder");
+            XmlNode imNode = configXml.DocumentElement.SelectSingleNode("interactiveMode");
+            XmlNode publisherNode = configXml.DocumentElement.SelectSingleNode("publisher");
+            XmlNode dctNode = configXml.DocumentElement.SelectSingleNode("defaultChapterTitle");
+            
             if (ofNode != null)
                 Globale.OUTPUT_FOLDER = ofNode.InnerText;
 
@@ -113,74 +192,6 @@ namespace LightNovelSniffer.Config
 
             if (dctNode != null)
                 Globale.DEFAULT_CHAPTER_TITLE = dctNode.InnerText;
-
-            Globale.LN_TO_RETRIEVE = new List<LnParameters>();
-
-            if (lnToRetrieveNode != null)
-            {
-                XmlNodeList lnNodes = lnToRetrieveNode.SelectNodes("ln");
-                if (lnNodes != null)
-                    foreach (XmlNode ln in lnNodes)
-                    {
-                        LnParameters lnParameter = new LnParameters();
-
-                        XmlNode nameNode = ln.SelectSingleNode("name");
-                        XmlNode coverNode = ln.SelectSingleNode("urlCover");
-                        XmlNode authorsListNode = ln.SelectSingleNode("authors");
-                        XmlNode versionsNode = ln.SelectSingleNode("versions");
-
-                        if (nameNode != null)
-                            lnParameter.name = nameNode.InnerText;
-                        if (coverNode != null)
-                            lnParameter.urlCover = coverNode.InnerText;
-
-                        if (authorsListNode != null)
-                        {
-                            XmlNodeList authorNodes = authorsListNode.SelectNodes("author");
-                            if (authorNodes != null)
-                            {
-                                foreach (XmlNode authorNode in authorNodes)
-                                    lnParameter.authors.Add(authorNode.InnerText);
-                            }
-                        }
-
-
-                        if (versionsNode != null)
-                        {
-                            foreach (XmlNode version in versionsNode.SelectNodes("version"))
-                            {
-                                UrlParameter up = new UrlParameter();
-
-                                XmlNode urlNode = version.SelectSingleNode("url");
-                                XmlNode languageNode = version.SelectSingleNode("language");
-                                XmlNode fcNode = version.SelectSingleNode("firstChapterNumber");
-                                XmlNode lcNode = version.SelectSingleNode("lastChapterNumber");
-
-                                if (urlNode != null)
-                                    up.url = urlNode.InnerText;
-
-                                if (languageNode != null)
-                                    up.language = languageNode.InnerText;
-
-                                if (fcNode != null)
-                                {
-                                    if (!int.TryParse(fcNode.InnerText, out up.firstChapterNumber))
-                                        up.firstChapterNumber = 1;
-                                }
-
-                                if (lcNode != null)
-                                {
-                                    if (!int.TryParse(lcNode.InnerText, out up.lastChapterNumber))
-                                        up.lastChapterNumber = -1;
-                                }
-
-                                lnParameter.urlParameters.Add(up);
-                            }
-                        }
-
-                        Globale.LN_TO_RETRIEVE.Add(lnParameter);
-                    }
-            }
         }
     }
 }
