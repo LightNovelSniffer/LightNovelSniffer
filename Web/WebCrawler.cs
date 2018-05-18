@@ -41,6 +41,8 @@ namespace LightNovelSniffer.Web
 
             List<LnChapter> lnChapters = new List<LnChapter>();
 
+            int notExistingChapterBeforeStop = 0;
+
             while (urlParameter.lastChapterNumber <= -1 || i <= urlParameter.lastChapterNumber)
             {
                 try
@@ -77,14 +79,13 @@ namespace LightNovelSniffer.Web
 
                     lnChapter.chapNumber = i;
                     lnChapters.Add(lnChapter);
+                    notExistingChapterBeforeStop = 0;
                 }
                 catch (NotExistingChapterException)
                 {
-                    if (!Globale.INTERACTIVE_MODE ||
-                            !input.Ask(
-                                string.Format(
-                                    LightNovelSniffer_Strings.LogChapterDoesntExist_AskForNext,
-                                    i)))
+                    notExistingChapterBeforeStop++;
+                    if (    (!Globale.INTERACTIVE_MODE && notExistingChapterBeforeStop > Globale.MAX_NOT_EXISTING_CHAPTER_BEFORE_STOP) 
+                            || (Globale.INTERACTIVE_MODE && !input.Ask(string.Format(LightNovelSniffer_Strings.LogChapterDoesntExist_AskForNext,i))))
                         break;
                 } catch (System.Exception e)
                 {
