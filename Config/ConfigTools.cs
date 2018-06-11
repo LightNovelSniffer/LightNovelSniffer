@@ -196,7 +196,7 @@ namespace LightNovelSniffer.Config
             XmlNode publisherNode = configXml.DocumentElement.SelectSingleNode("publisher");
             XmlNode dctNode = configXml.DocumentElement.SelectSingleNode("defaultChapterTitle");
             XmlNode maxChapterOnErrorCountBeforeStop =
-                configXml.DocumentElement.SelectSingleNode("maxChapterErrorCountBeforeStop");
+                configXml.DocumentElement.SelectSingleNode("maxChapterOnErrorCountBeforeStop");
 
             if (ofNode != null)
                 Globale.OUTPUT_FOLDER = ofNode.InnerText;
