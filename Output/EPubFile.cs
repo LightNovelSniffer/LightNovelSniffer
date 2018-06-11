@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using LightNovelSniffer.Config;
+using LightNovelSniffer.Exception;
 using LightNovelSniffer.Web;
 using Document = LightNovelSniffer.Libs.DotNetEpub.Document;
 
@@ -37,16 +38,20 @@ namespace LightNovelSniffer.Output
 
         private void AddCover()
         {
-            byte[] cover = WebCrawler.DownloadCover(lnParameters.urlCover);
-            if (cover != null && cover.Length > 0)
+            try
             {
-                string coverFilename = "cover." + lnParameters.urlCover.Split('.').Last();
-                
-                epub.AddImageData(coverFilename, cover);
-                epub.AddMetaItem("cover", coverFilename);
-                epub.AddImageData("." + coverFilename, cover);
-                epub.AddMetaItem(".cover", coverFilename);
-            }
+                byte[] cover = WebCrawler.DownloadCover(lnParameters.urlCover);
+                if (cover != null && cover.Length > 0)
+                {
+                    string coverFilename = "cover." + lnParameters.urlCover.Split('.').Last();
+
+                    epub.AddImageData(coverFilename, cover);
+                    epub.AddMetaItem("cover", coverFilename);
+                    epub.AddImageData("." + coverFilename, cover);
+                    epub.AddMetaItem(".cover", coverFilename);
+                }
+            } catch (CoverException e)
+            {}
         }
 
         public override void AddChapter(LnChapter lnChapter)

@@ -3,6 +3,7 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using LightNovelSniffer.Config;
+using LightNovelSniffer.Exception;
 using LightNovelSniffer.Web;
 using PdfChapter = iTextSharp.text.Chapter;
 using PdfParagraph = iTextSharp.text.Paragraph;
@@ -114,28 +115,35 @@ namespace LightNovelSniffer.Output
 
         private void AddCover()
         {
-            PdfImage pic = PdfImage.GetInstance(lnParameters.urlCover);
-
-            if (pic.Height > pic.Width)
+            try
             {
-                //Maximum height is 800 pixels.
-                float percentage = 0.0f;
-                percentage = 700 / pic.Height;
-                pic.ScalePercent(percentage * 100);
-            }
-            else
-            {
-                //Maximum width is 600 pixels.
-                float percentage = 0.0f;
-                percentage = 540 / pic.Width;
-                pic.ScalePercent(percentage * 100);
-            }
+                byte[] cover = WebCrawler.DownloadCover(lnParameters.urlCover);
 
-            pic.Border = Rectangle.BOX;
-            pic.BorderColor = BaseColor.BLACK;
-            pic.BorderWidth = 3f;
-            pdf.NewPage();
-            pdf.Add(pic);
+                PdfImage pic = PdfImage.GetInstance(cover);
+
+                if (pic.Height > pic.Width)
+                {
+                    //Maximum height is 800 pixels.
+                    float percentage = 0.0f;
+                    percentage = 700 / pic.Height;
+                    pic.ScalePercent(percentage * 100);
+                }
+                else
+                {
+                    //Maximum width is 600 pixels.
+                    float percentage = 0.0f;
+                    percentage = 540 / pic.Width;
+                    pic.ScalePercent(percentage * 100);
+                }
+
+                pic.Border = Rectangle.BOX;
+                pic.BorderColor = BaseColor.BLACK;
+                pic.BorderWidth = 3f;
+                pdf.NewPage();
+                pdf.Add(pic);
+            }
+            catch (CoverException)
+            {}
         }
     }
 }
