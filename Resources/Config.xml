@@ -11,7 +11,7 @@ YOU HAVE TO COPY IT TO YOUR CLIENT (CLI OR GUI)
 <Parameters>
     <outputFolder>c:\</outputFolder>
     <interactiveMode>true</interactiveMode>
-    <publisher>ARUS Joshua</publisher>
-    <defaultChapterTitle>Chapitre {0}</defaultChapterTitle>
+    <publisher>LightNovelSniffer</publisher>
+    <defaultChapterTitle>Chapter {0}</defaultChapterTitle>
     <maxChapterOnErrorCountBeforeStop>10</maxChapterOnErrorCountBeforeStop> <!-- if not interactiveMode, will try X chapters on error before stoping the process -->
 </Parameters>
