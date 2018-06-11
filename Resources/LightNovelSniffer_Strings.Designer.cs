@@ -250,7 +250,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The file Config.xml cannot be read..
+        ///   Looks up a localized string similar to The config file {0} cannot be read..
         /// </summary>
         public static string UnableToReadConfigFileExceptionMessage {
             get {
@@ -259,7 +259,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The file LightNovels.xml cannot be read..
+        ///   Looks up a localized string similar to The lightNovels file {0} cannot be read..
         /// </summary>
         public static string UnableToReadLightNovelsFileExceptionMessage {
             get {

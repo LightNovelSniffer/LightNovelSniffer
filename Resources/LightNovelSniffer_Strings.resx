@@ -181,9 +181,9 @@
     <value>Retrieving {0}/{1}</value>
   </data>
   <data name="UnableToReadConfigFileExceptionMessage" xml:space="preserve">
-    <value>The file Config.xml cannot be read.</value>
+    <value>The config file {0} cannot be read.</value>
   </data>
   <data name="UnableToReadLightNovelsFileExceptionMessage" xml:space="preserve">
-    <value>The file LightNovels.xml cannot be read.</value>
+    <value>The lightNovels file {0} cannot be read.</value>
   </data>
 </root>
