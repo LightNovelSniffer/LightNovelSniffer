@@ -151,6 +151,15 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parser failed to process chapter {0}. Do you want to try the following one ?.
+        /// </summary>
+        public static string LogChapterParserException_AskForNext {
+            get {
+                return ResourceManager.GetString("LogChapterParserException_AskForNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EPUB creation file ended..
         /// </summary>
         public static string LogClosingEpubFile {
@@ -201,6 +210,15 @@ namespace LightNovelSniffer.Resources {
         public static string LogNoParserAvailable {
             get {
                 return ResourceManager.GetString("LogNoParserAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The chapter {0} doesn&apos;t seems to exist..
+        /// </summary>
+        public static string LogNotExistingChapter {
+            get {
+                return ResourceManager.GetString("LogNotExistingChapter", resourceCulture);
             }
         }
         

@@ -13,5 +13,5 @@ YOU HAVE TO COPY IT TO YOUR CLIENT (CLI OR GUI)
     <interactiveMode>true</interactiveMode>
     <publisher>ARUS Joshua</publisher>
     <defaultChapterTitle>Chapitre {0}</defaultChapterTitle>
-    <maxNotExistingChapterBeforeStop>10</maxNotExistingChapterBeforeStop> <!-- if not interactiveMode, will try X chapters before considering it was the last one -->
+    <maxChapterOnErrorCountBeforeStop>10</maxChapterOnErrorCountBeforeStop> <!-- if not interactiveMode, will try X chapters on error before stoping the process -->
 </Parameters>

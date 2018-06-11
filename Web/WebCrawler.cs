@@ -41,7 +41,7 @@ namespace LightNovelSniffer.Web
 
             List<LnChapter> lnChapters = new List<LnChapter>();
 
-            int notExistingChapterBeforeStop = 0;
+            int chapterOnErrorCountBeforeStop = 0;
 
             while (urlParameter.lastChapterNumber <= -1 || i <= urlParameter.lastChapterNumber)
             {
@@ -79,17 +79,24 @@ namespace LightNovelSniffer.Web
 
                     lnChapter.chapNumber = i;
                     lnChapters.Add(lnChapter);
-                    notExistingChapterBeforeStop = 0;
+                    chapterOnErrorCountBeforeStop = 0;
                 }
                 catch (NotExistingChapterException)
                 {
-                    notExistingChapterBeforeStop++;
-                    if (    (!Globale.INTERACTIVE_MODE && notExistingChapterBeforeStop > Globale.MAX_NOT_EXISTING_CHAPTER_BEFORE_STOP) 
+                    if (!Globale.INTERACTIVE_MODE)
+                        output.Log(LightNovelSniffer_Strings.LogNotExistingChapter);
+                    chapterOnErrorCountBeforeStop++;
+                    if (    (!Globale.INTERACTIVE_MODE && chapterOnErrorCountBeforeStop > Globale.MAX_CHAPTER_ON_ERROR_COUNT_BEFORE_STOP) 
                             || (Globale.INTERACTIVE_MODE && !input.Ask(string.Format(LightNovelSniffer_Strings.LogChapterDoesntExist_AskForNext,i))))
                         break;
                 } catch (System.Exception e)
                 {
-                    throw new ParserException(string.Format(LightNovelSniffer_Strings.LogErrorProcessingUrlByParser, string.Format(baseUrl, i), parser.GetType()), e);
+                    if (!Globale.INTERACTIVE_MODE)
+                        output.Log(string.Format(LightNovelSniffer_Strings.LogErrorProcessingUrlByParser, string.Format(baseUrl, i), parser.GetType()));
+                    chapterOnErrorCountBeforeStop++;
+                    if (    (!Globale.INTERACTIVE_MODE && chapterOnErrorCountBeforeStop > Globale.MAX_CHAPTER_ON_ERROR_COUNT_BEFORE_STOP)
+                            || (Globale.INTERACTIVE_MODE && !input.Ask(string.Format(LightNovelSniffer_Strings.LogChapterParserException_AskForNext, i))))
+                        break;
                 }
                 i++;
             }

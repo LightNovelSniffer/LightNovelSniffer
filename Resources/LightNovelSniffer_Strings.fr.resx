@@ -147,6 +147,9 @@
   <data name="LogChapterDoesntExist_AskForNext" xml:space="preserve">
     <value>Le chapitre {0} ne semble pas exister. Voulez vous vérifier la présence du chapitre suivant ?</value>
   </data>
+  <data name="LogChapterParserException_AskForNext" xml:space="preserve">
+    <value>Erreur du traitement du chapitre {0} par le parser. Voulez vous tenter le suivant ?</value>
+  </data>
   <data name="LogClosingEpubFile" xml:space="preserve">
     <value>Fin de création de l'EPUB.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="LogNoParserAvailable" xml:space="preserve">
     <value>Pas de parser existant pour cette URL.</value>
+  </data>
+  <data name="LogNotExistingChapter" xml:space="preserve">
+    <value>Le chapitre {0} ne semble aps exister.</value>
   </data>
   <data name="LogOpeningEpubFile" xml:space="preserve">
     <value>Création du fichier EPUB.</value>
