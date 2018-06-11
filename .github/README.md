@@ -5,18 +5,20 @@ This is a core library. It will need a proper interface to work. For now, there 
 
 ## Instructions
 ### Entry Point
-You program need to call the ConfigTools.InitConf function to load the Config.xml file, and initialize global variables.
-Then, use the WebCrawler class as entry point to download chapters (either defined in the Config.xml file, or dynamically instantiated in your program)
+You program need to call the `ConfigTools.InitConf` function with the Config.xml filename to load the default parameters, and initialize global variables. You can call the function multiple times with different files to override values.
+When it's done, call `ConfigTools.InitLightNovels` function with the LightNovels.xml filename to load the LN list. You can call this function multiple times with different files. By default it will add LNs to a global list. If you call the function with `true` as the second parameter, the list will be cleared before file import.
+
+Then, use the `WebCrawler` class as entry point to download chapters (either defined in the `LightNovels.xml` or `LightNovels_user.xml` file, or dynamically instantiated in your program)
 
 ### Communication
-To allow the library to interact with the user or an external programm (ask information, or output some progress), classes implementing the IInput and IOutput interface are required for the WebCrawler constructor.
+To allow the library to interact with the user or an external programm (ask information, or output some progress), classes implementing the `IInput` and `IOutput` interface are required for the `WebCrawler` constructor.
 
 ### Parser
-New parsers (to handle new websites) can be added either to this project in the Web/Parser folder with a pull request, or dynamically loaded in the ParserFactory.
-In any case, classes need to implement the IParser interface.
+New parsers (to handle new websites) can be added either to this project in the `Web/Parser` folder with a pull request, or dynamically loaded in the `ParserFactory`.
+In any case, classes need to implement the `IParser` interface.
 
 ### Translations
-Translations can be added to the project by adding à Strings.**Code**.resx file to Resource folder (where **Code** is a CultureInfo code like "en-US" or "fr-FR"...). Feel free to submit your corrections, suggestions or addition in a PR.
+Translations can be added to the project by adding a `Strings.**Code**.resx` file to Resource folder (where **Code** is a CultureInfo code like "en-US" or "fr-FR"...). Feel free to submit your corrections, suggestions or addition in a PR.
 
 ## Dependencies
 ### Web parser
