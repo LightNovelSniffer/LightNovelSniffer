@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using HtmlAgilityPack;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using LightNovelSniffer.Config;
@@ -78,8 +79,9 @@ namespace LightNovelSniffer.Output
 
             PdfChapter pdfChapter = new PdfChapter(lnChapter.title, lnChapter.chapNumber);
 
-            foreach (string paragraph in lnChapter.paragraphs.ParseHtmlNodeToStringList())
+            foreach (HtmlNode paragraphNode in lnChapter.paragraphs)
             {
+                string paragraph = paragraphNode.ParseHtmlNodeToString();
                 pdfChapter.Add(
                     new PdfParagraph(paragraph)
                     {
