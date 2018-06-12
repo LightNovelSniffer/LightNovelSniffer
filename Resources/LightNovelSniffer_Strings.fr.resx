@@ -169,7 +169,7 @@
     <value>Pas de parser existant pour cette URL.</value>
   </data>
   <data name="LogNotExistingChapter" xml:space="preserve">
-    <value>Le chapitre {0} ne semble aps exister.</value>
+    <value>Le chapitre {0} ne semble pas exister.</value>
   </data>
   <data name="LogOpeningEpubFile" xml:space="preserve">
     <value>Création du fichier EPUB.</value>
