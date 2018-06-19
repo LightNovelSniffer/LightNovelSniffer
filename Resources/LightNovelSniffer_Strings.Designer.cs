@@ -160,7 +160,7 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EPUB creation file ended..
+        ///   Looks up a localized string similar to EPUB file closed..
         /// </summary>
         public static string LogClosingEpubFile {
             get {
@@ -169,7 +169,16 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Closing PDF file..
+        ///   Looks up a localized string similar to JSON file closed..
+        /// </summary>
+        public static string LogClosingJsonFile {
+            get {
+                return ResourceManager.GetString("LogClosingJsonFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PDF file closed..
         /// </summary>
         public static string LogClosingPdfFile {
             get {
@@ -223,11 +232,20 @@ namespace LightNovelSniffer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating EPUB file..
+        ///   Looks up a localized string similar to Opening EPUB file..
         /// </summary>
         public static string LogOpeningEpubFile {
             get {
                 return ResourceManager.GetString("LogOpeningEpubFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening JSON file..
+        /// </summary>
+        public static string LogOpeningJsonFile {
+            get {
+                return ResourceManager.GetString("LogOpeningJsonFile", resourceCulture);
             }
         }
         

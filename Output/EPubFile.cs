@@ -29,7 +29,7 @@ namespace LightNovelSniffer.Output
             epub.AddPublisher(Globale.PUBLISHER);
             epub.AddLanguage(language);
             epub.AddTitle(DocumentTitle);
-            
+
             if (!string.IsNullOrEmpty(lnParam.urlCover))
             {
                 AddCover();
@@ -50,25 +50,24 @@ namespace LightNovelSniffer.Output
                     epub.AddImageData("." + coverFilename, cover);
                     epub.AddMetaItem(".cover", coverFilename);
                 }
-            } catch (CoverException e)
-            {}
+            }
+            catch (CoverException e)
+            {
+            }
         }
 
         public override void AddChapter(LnChapter lnChapter)
         {
-            lnChapter.title = string.IsNullOrEmpty(lnChapter.title)
-                ? string.Format(Globale.DEFAULT_CHAPTER_TITLE, lnChapter.chapNumber)
-                : lnChapter.title;
-
-            string content = 
-                GetHeader(lnParameters.name, lnChapter.title) 
-                + string.Join("\r\n", lnChapter.paragraphs.Select(p => p.OuterHtml.Replace("<br>", "<br/>").Replace("<hr>", "<hr/>"))) 
+            string content =
+                GetHeader(lnParameters.name, lnChapter.title)
+                + string.Join("\r\n", lnChapter.paragraphs.Select(p => p.OuterHtml))
                 + GetFooter();
-            string chapFilename = "chap" + nbChapInEpub + ".html";
             
+            string chapFilename = "chap" + nbChapInEpub + ".html";
+
             epub.AddXhtmlData(chapFilename, content);
             epub.AddNavPoint(lnChapter.title, chapFilename, nbChapInEpub);
-            
+
             nbChapInEpub++;
         }
 
@@ -98,6 +97,12 @@ namespace LightNovelSniffer.Output
         private string GetFooter()
         {
             return @"</body></html>";
+        }
+
+        public override void Close()
+        {
+            base.Close();
+            this.epub = null;
         }
     }
 }

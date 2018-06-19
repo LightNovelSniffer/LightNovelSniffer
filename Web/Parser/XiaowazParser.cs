@@ -13,7 +13,7 @@ namespace LightNovelSniffer.Web.Parser
 
         public LnChapter Parse(HtmlDocument doc)
         {
-            List<HtmlNode> paragraphs = doc
+            List<LnNode> paragraphs = doc
                 .DocumentNode
                 .SelectSingleNode("//body")
                 .SelectNodes("//div")
@@ -29,7 +29,7 @@ namespace LightNovelSniffer.Web.Parser
                 .TakeWhile(p => 
                     p.Attributes["class"] == null ||
                     !p.Attributes["class"].Value.Equals("nav-previous"))
-                .ToList();
+                .ToLnNodeList();
 
             if (paragraphs.Count == 0)
                 return null;

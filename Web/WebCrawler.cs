@@ -30,6 +30,7 @@ namespace LightNovelSniffer.Web
             int i = urlParameter.firstChapterNumber;
             PdfFile pdf =  new PdfFile(ln, language);
             EPubFile epub = new EPubFile(ln, language);
+            JsonFile json = new JsonFile(ln, language);
             string baseUrl = urlParameter.url;
             IParser parser = new ParserFactory().GetParser(baseUrl);
 
@@ -76,6 +77,10 @@ namespace LightNovelSniffer.Web
                     {
                         throw new NotExistingChapterException();
                     }
+                    if (lnChapter.title == null)
+                    {
+                        lnChapter.title = string.Format(Globale.DEFAULT_CHAPTER_TITLE, lnChapter.chapNumber.ToString().PadLeft(3, '0'));
+                    }
 
                     lnChapter.chapNumber = i;
                     lnChapters.Add(lnChapter);
@@ -107,16 +112,23 @@ namespace LightNovelSniffer.Web
                 return;
             }
 
-            pdf.AddChapters(lnChapters);
-            epub.AddChapters(lnChapters);
+            json.AddChapters(lnChapters);
+            output.Log(LightNovelSniffer_Strings.LogOpeningJsonFile);
+            json.SaveDocument();
+            output.Log(LightNovelSniffer_Strings.LogClosingJsonFile);
+            json.Close();
 
+            pdf.AddChapters(lnChapters);
             output.Log(LightNovelSniffer_Strings.LogOpeningPdfFile);
             pdf.SaveDocument();
             output.Log(LightNovelSniffer_Strings.LogClosingPdfFile);
+            pdf.Close();
 
+            epub.AddChapters(lnChapters);
             output.Log(LightNovelSniffer_Strings.LogOpeningEpubFile);
             epub.SaveDocument();
             output.Log(LightNovelSniffer_Strings.LogClosingEpubFile);
+            epub.Close();
 
             output.Log(string.Format(LightNovelSniffer_Strings.LogEndLnLanguage, ln.name.ToUpper(), language.ToUpper()));
         }

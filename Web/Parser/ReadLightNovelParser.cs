@@ -31,7 +31,7 @@ namespace LightNovelSniffer.Web.Parser
             List<HtmlNode> list = paragraphs.Skip(1).ToList();
             list.ForEach(CleanHtmlNode);
             
-            return new LnChapter(title, list);
+            return new LnChapter(title, list.ToLnNodeList());
         }
 
         public bool CanParse(string url)

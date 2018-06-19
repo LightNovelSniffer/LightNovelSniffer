@@ -65,6 +65,9 @@
       <HintPath>lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -98,6 +101,8 @@
     <Compile Include="Config\Globale.cs" />
     <Compile Include="Libs\IInput.cs" />
     <Compile Include="Libs\IOutput.cs" />
+    <Compile Include="Libs\JsonTools.cs" />
+    <Compile Include="Output\JsonFile.cs" />
     <Compile Include="Resources\LightNovelSniffer_Strings.fr.Designer.cs">
       <DependentUpon>LightNovelSniffer_Strings.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>

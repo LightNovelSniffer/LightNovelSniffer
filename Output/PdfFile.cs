@@ -54,7 +54,7 @@ namespace LightNovelSniffer.Output
         {
             InitiateDocument(lnParam, language);
         }
-        
+
         protected override void InitiateDocument(LnParameters lnParam, string language)
         {
             this.lnParameters = lnParam;
@@ -72,16 +72,11 @@ namespace LightNovelSniffer.Output
 
         public override void AddChapter(LnChapter lnChapter)
         {
-            if (lnChapter.title == null)
-            {
-                lnChapter.title = string.Format(Globale.DEFAULT_CHAPTER_TITLE, lnChapter.chapNumber.ToString().PadLeft(3, '0'));
-            }
-
             PdfChapter pdfChapter = new PdfChapter(lnChapter.title, lnChapter.chapNumber);
 
-            foreach (HtmlNode paragraphNode in lnChapter.paragraphs)
+            foreach (LnNode paragraphNode in lnChapter.paragraphs)
             {
-                string paragraph = paragraphNode.ParseHtmlNodeToString();
+                string paragraph = paragraphNode.InnerText.DecodeHtml();
                 pdfChapter.Add(
                     new PdfParagraph(paragraph)
                     {
@@ -97,12 +92,12 @@ namespace LightNovelSniffer.Output
         {
             base.SaveDocument();
             PdfWriter wri = PdfWriter.GetInstance(pdf, File.Create(Path.Combine(OutputFolder, FileName + ".pdf")));
-            
+
             pdf.Open();
 
             if (!string.IsNullOrEmpty(lnParameters.urlCover))
                 AddCover();
-            
+
             foreach (PdfChapter pdfChapter in pdfChapters)
             {
                 pdf.NewPage();
@@ -127,15 +122,15 @@ namespace LightNovelSniffer.Output
                 {
                     //Maximum height is 800 pixels.
                     float percentage = 0.0f;
-                    percentage = 700 / pic.Height;
-                    pic.ScalePercent(percentage * 100);
+                    percentage = 700/pic.Height;
+                    pic.ScalePercent(percentage*100);
                 }
                 else
                 {
                     //Maximum width is 600 pixels.
                     float percentage = 0.0f;
-                    percentage = 540 / pic.Width;
-                    pic.ScalePercent(percentage * 100);
+                    percentage = 540/pic.Width;
+                    pic.ScalePercent(percentage*100);
                 }
 
                 pic.Border = Rectangle.BOX;
@@ -145,7 +140,17 @@ namespace LightNovelSniffer.Output
                 pdf.Add(pic);
             }
             catch (CoverException)
-            {}
+            {
+            }
+        }
+
+        public override void Close()
+        {
+            base.Close();
+            this.pdf.Close();
+            this.pdf.Dispose();
+            this.pdf = null;
+            this.pdfChapters = null;
         }
     }
 }

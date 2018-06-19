@@ -12,7 +12,7 @@ namespace LightNovelSniffer.Output
 
         protected abstract void InitiateDocument(LnParameters ln, string language);
         public abstract void AddChapter(LnChapter lnChapter);
-
+        
         public void AddChapters(ICollection<LnChapter> lnChapters)
         {
             foreach (LnChapter chapter in lnChapters)
@@ -37,6 +37,11 @@ namespace LightNovelSniffer.Output
         public string FileName
         {
             get { return lnParameters.name + " " + currentLanguage; }
+        }
+
+        public virtual void Close()
+        {
+            this.lnParameters = null;
         }
     }
 }

@@ -24,17 +24,17 @@ namespace LightNovelSniffer.Web.Parser
             if (node == null)
                 return null;
 
-            ICollection<HtmlNode> paragraphs = node
+            ICollection<LnNode> paragraphs = node
                 .ChildNodes
                 .Where(b => b.Name != "#text")
-                .ToList();
+                .ToLnNodeList();
 
             paragraphs = paragraphs.Take(paragraphs.Count - 3).ToList();
 
             if (paragraphs.Count == 0)
                 return null;
 
-            return new LnChapter(paragraphs.First().ParseHtmlNodeToString(), paragraphs.Skip(1).ToList());
+            return new LnChapter(paragraphs.First().InnerText.DecodeHtml(), paragraphs.Skip(1).ToList());
         }
     }
 }

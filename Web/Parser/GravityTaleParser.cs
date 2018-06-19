@@ -26,12 +26,12 @@ namespace LightNovelSniffer.Web.Parser
             if (node == null)
                 return null;
 
-            List<HtmlNode> paragraphs = node
+            List<LnNode> paragraphs = node
                 .ChildNodes
                 .Where(b => b.Name != "#text")
-                .ToList();
+                .ToLnNodeList();
 
-            while (paragraphs.Count > 0 && string.IsNullOrEmpty(paragraphs.First().ParseHtmlNodeToString()))
+            while (paragraphs.Count > 0 && string.IsNullOrEmpty(paragraphs.First().InnerText.DecodeHtml()))
             {
                 paragraphs = paragraphs.Skip(1).ToList();
             }
@@ -39,7 +39,7 @@ namespace LightNovelSniffer.Web.Parser
             if (paragraphs.Count == 0)
                 return null;
 
-            string title = paragraphs.First().ParseHtmlNodeToString();
+            string title = paragraphs.First().InnerText.DecodeHtml();
 
             if (title.ContainsInvarient("chapter"))
             {
