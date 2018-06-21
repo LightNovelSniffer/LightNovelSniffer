@@ -89,7 +89,7 @@ namespace LightNovelSniffer.Web
                 catch (NotExistingChapterException)
                 {
                     if (!Globale.INTERACTIVE_MODE)
-                        output.Log(LightNovelSniffer_Strings.LogNotExistingChapter);
+                        output.Log(string.Format(LightNovelSniffer_Strings.LogNotExistingChapter, i));
                     chapterOnErrorCountBeforeStop++;
                     if (    (!Globale.INTERACTIVE_MODE && chapterOnErrorCountBeforeStop > Globale.MAX_CHAPTER_ON_ERROR_COUNT_BEFORE_STOP) 
                             || (Globale.INTERACTIVE_MODE && !input.Ask(string.Format(LightNovelSniffer_Strings.LogChapterDoesntExist_AskForNext,i))))
