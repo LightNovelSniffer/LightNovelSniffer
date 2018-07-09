@@ -29,7 +29,7 @@ namespace LightNovelSniffer.Web.Parser
                 .Where(b => b.Name != "#text")
                 .ToLnNodeList();
 
-            paragraphs = paragraphs.Take(paragraphs.Count - 3).ToList();
+            paragraphs = paragraphs.Take(paragraphs.Count - 2).ToList(); // remove navigation paragraphs
 
             if (paragraphs.Count == 0)
                 return null;
