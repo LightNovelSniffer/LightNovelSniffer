@@ -195,6 +195,8 @@ namespace LightNovelSniffer.Config
             XmlNode imNode = configXml.DocumentElement.SelectSingleNode("interactiveMode");
             XmlNode publisherNode = configXml.DocumentElement.SelectSingleNode("publisher");
             XmlNode dctNode = configXml.DocumentElement.SelectSingleNode("defaultChapterTitle");
+            XmlNode refNode = configXml.DocumentElement.SelectSingleNode("resumeExistingFile");
+
             XmlNode maxChapterOnErrorCountBeforeStop =
                 configXml.DocumentElement.SelectSingleNode("maxChapterOnErrorCountBeforeStop");
 
@@ -219,6 +221,12 @@ namespace LightNovelSniffer.Config
                     !int.TryParse(maxChapterOnErrorCountBeforeStop.InnerText,
                         out Globale.MAX_CHAPTER_ON_ERROR_COUNT_BEFORE_STOP))
                     Globale.MAX_CHAPTER_ON_ERROR_COUNT_BEFORE_STOP = 0;
+            }
+
+            if (refNode != null)
+            {
+                if (!bool.TryParse(refNode.InnerText, out Globale.RESUME_EXISTING_FILE))
+                    Globale.RESUME_EXISTING_FILE = true;
             }
         }
     }

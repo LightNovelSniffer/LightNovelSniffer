@@ -39,6 +39,8 @@ namespace LightNovelSniffer.Output
             get { return lnParameters.name + " " + currentLanguage; }
         }
 
+        public abstract string OutputFullPath();
+
         public virtual void Close()
         {
             this.lnParameters = null;

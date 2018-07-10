@@ -40,11 +40,11 @@ namespace LightNovelSniffer.Output
         {
             try
             {
-                byte[] cover = WebCrawler.DownloadCover(lnParameters.urlCover);
+                byte[] cover = WebTools.DownloadCover(lnParameters.urlCover);
                 if (cover != null && cover.Length > 0)
                 {
                     string coverFilename = "cover." + lnParameters.urlCover.Split('.').Last();
-
+                    
                     epub.AddImageData(coverFilename, cover);
                     epub.AddMetaItem("cover", coverFilename);
                     epub.AddImageData("." + coverFilename, cover);
@@ -74,7 +74,7 @@ namespace LightNovelSniffer.Output
         public override void SaveDocument()
         {
             base.SaveDocument();
-            epub.Generate(Path.Combine(OutputFolder, FileName + ".epub"));
+            epub.Generate(OutputFullPath());
         }
 
         private string GetHeader(string lnTitle, string chapterTitle)
@@ -97,6 +97,11 @@ namespace LightNovelSniffer.Output
         private string GetFooter()
         {
             return @"</body></html>";
+        }
+
+        public override string OutputFullPath()
+        {
+            return Path.Combine(OutputFolder, FileName + ".epub");
         }
 
         public override void Close()

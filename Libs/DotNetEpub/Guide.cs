@@ -33,7 +33,7 @@ namespace LightNovelSniffer.Libs.DotNetEpub
 
         internal Guide()
         {
-            _element = new XElement(LightNovelSniffer.Libs.DotNetEpub.Document.OpfNS + "guide");
+            _element = new XElement(Document.OpfNS + "guide");
         }
 
         internal void AddReference(string href, string type)
@@ -43,7 +43,7 @@ namespace LightNovelSniffer.Libs.DotNetEpub
 
         internal void AddReference(string href, string type, string title)
         {
-            var itemref = new XElement(LightNovelSniffer.Libs.DotNetEpub.Document.OpfNS + "reference",
+            var itemref = new XElement(Document.OpfNS + "reference",
                 new XAttribute("href", href), new XAttribute("type", type), new XAttribute("title", title));
             if (!String.IsNullOrEmpty(title))
                 itemref.SetAttributeValue("title", title);

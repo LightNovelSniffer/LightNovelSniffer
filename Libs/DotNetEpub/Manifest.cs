@@ -31,12 +31,12 @@ namespace LightNovelSniffer.Libs.DotNetEpub
         XElement _element;
         internal Manifest()
         {
-            _element = new XElement(LightNovelSniffer.Libs.DotNetEpub.Document.OpfNS + "manifest");
+            _element = new XElement(Document.OpfNS + "manifest");
         }
 
         internal void AddItem(string id, string href, string type)
         {
-            XElement item = new XElement(LightNovelSniffer.Libs.DotNetEpub.Document.OpfNS + "item");
+            XElement item = new XElement(Document.OpfNS + "item");
             item.SetAttributeValue("id", id);
             item.SetAttributeValue("href", href);
             item.SetAttributeValue("media-type", type);

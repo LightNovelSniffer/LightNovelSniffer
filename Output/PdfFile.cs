@@ -91,7 +91,7 @@ namespace LightNovelSniffer.Output
         public override void SaveDocument()
         {
             base.SaveDocument();
-            PdfWriter wri = PdfWriter.GetInstance(pdf, File.Create(Path.Combine(OutputFolder, FileName + ".pdf")));
+            PdfWriter wri = PdfWriter.GetInstance(pdf, File.Create(OutputFullPath()));
 
             pdf.Open();
 
@@ -114,7 +114,7 @@ namespace LightNovelSniffer.Output
         {
             try
             {
-                byte[] cover = WebCrawler.DownloadCover(lnParameters.urlCover);
+                byte[] cover = WebTools.DownloadCover(lnParameters.urlCover);
 
                 PdfImage pic = PdfImage.GetInstance(cover);
 
@@ -142,6 +142,11 @@ namespace LightNovelSniffer.Output
             catch (CoverException)
             {
             }
+        }
+
+        public override string OutputFullPath()
+        {
+            return Path.Combine(OutputFolder, FileName + ".pdf");
         }
 
         public override void Close()

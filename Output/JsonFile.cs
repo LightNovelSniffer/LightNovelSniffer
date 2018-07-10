@@ -33,14 +33,18 @@ namespace LightNovelSniffer.Output
         {
             base.SaveDocument();
             File.WriteAllText(
-                Path.Combine(OutputFolder, FileName + ".json"),
+                OutputFullPath(),
                 JsonTools.Serialize(this));
+        }
+        
+        public override string OutputFullPath()
+        {
+            return Path.Combine(OutputFolder, FileName + ".json");
         }
 
         public override void Close()
         {
             base.Close();
-            this.chapters = null;
         }
     }
 }

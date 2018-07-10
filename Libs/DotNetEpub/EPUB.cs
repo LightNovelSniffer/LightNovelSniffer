@@ -28,6 +28,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using LightNovelSniffer.Libs.DotNetEpub;
 using Ionic.Zip;
 
 namespace LightNovelSniffer.Libs.DotNetEpub

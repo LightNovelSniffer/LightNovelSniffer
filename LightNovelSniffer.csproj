@@ -102,6 +102,8 @@
     <Compile Include="Libs\IInput.cs" />
     <Compile Include="Libs\IOutput.cs" />
     <Compile Include="Libs\JsonTools.cs" />
+    <Compile Include="Output\JsonFileFactory.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Output\JsonFile.cs" />
     <Compile Include="Resources\LightNovelSniffer_Strings.fr.Designer.cs">
       <DependentUpon>LightNovelSniffer_Strings.fr.resx</DependentUpon>
@@ -125,6 +127,7 @@
     <Compile Include="Web\Parser\ParserFactory.cs" />
     <Compile Include="Web\Parser\WuxiaworldParser.cs" />
     <Compile Include="Web\Parser\XiaowazParser.cs" />
+    <Compile Include="Web\WebTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

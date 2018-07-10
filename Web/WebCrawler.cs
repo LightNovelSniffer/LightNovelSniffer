@@ -12,36 +12,30 @@ using LightNovelSniffer.Resources;
 
 namespace LightNovelSniffer.Web
 {
-    public class WebCrawler
+    internal class WebCrawler
     {
         private IOutput output;
         private IInput input;
 
-        public WebCrawler(IOutput output, IInput input)
+        internal WebCrawler(IOutput output, IInput input)
         {
             this.output = output;
             this.input = input;
         }
 
-        public void DownloadChapters(LnParameters ln, string language)
+        internal List<LnChapter> DownloadChapters(UrlParameter urlParameter)
         {
-            output.Log(string.Format(LightNovelSniffer_Strings.LogBeginLnLanguage, ln.name.ToUpper(), language.ToUpper()));
-            UrlParameter urlParameter = ln.GetUrlParameter(language);
-            int i = urlParameter.firstChapterNumber;
-            PdfFile pdf =  new PdfFile(ln, language);
-            EPubFile epub = new EPubFile(ln, language);
-            JsonFile json = new JsonFile(ln, language);
             string baseUrl = urlParameter.url;
+            int i = urlParameter.firstChapterNumber;
+            List<LnChapter> lnChapters = new List<LnChapter>();
             IParser parser = new ParserFactory().GetParser(baseUrl);
 
             if (parser == null)
             {
                 output.Log(LightNovelSniffer_Strings.LogNoParserAvailable);
-                return;
+                return lnChapters;
             }
-
-            List<LnChapter> lnChapters = new List<LnChapter>();
-
+            
             int chapterOnErrorCountBeforeStop = 0;
 
             while (urlParameter.lastChapterNumber <= -1 || i <= urlParameter.lastChapterNumber)
@@ -109,48 +103,10 @@ namespace LightNovelSniffer.Web
             if (lnChapters.Count == 0)
             {
                 output.Log(LightNovelSniffer_Strings.LogNoChapterAvailableAtThisUrl);
-                return;
+                return lnChapters;
             }
 
-            json.AddChapters(lnChapters);
-            output.Log(LightNovelSniffer_Strings.LogOpeningJsonFile);
-            json.SaveDocument();
-            output.Log(LightNovelSniffer_Strings.LogClosingJsonFile);
-            json.Close();
-
-            pdf.AddChapters(lnChapters);
-            output.Log(LightNovelSniffer_Strings.LogOpeningPdfFile);
-            pdf.SaveDocument();
-            output.Log(LightNovelSniffer_Strings.LogClosingPdfFile);
-            pdf.Close();
-
-            epub.AddChapters(lnChapters);
-            output.Log(LightNovelSniffer_Strings.LogOpeningEpubFile);
-            epub.SaveDocument();
-            output.Log(LightNovelSniffer_Strings.LogClosingEpubFile);
-            epub.Close();
-
-            output.Log(string.Format(LightNovelSniffer_Strings.LogEndLnLanguage, ln.name.ToUpper(), language.ToUpper()));
-        }
-
-        public static byte[] DownloadCover(string urlCover)
-        {
-            using (WebClient client = new WebClient())
-            {
-                try
-                {
-                    return client.DownloadData(new Uri(urlCover));
-                }
-                catch (System.Exception ex)
-                {
-                    if (ex is UriFormatException || ex is WebException)
-                    {
-                        throw new CoverException(string.Format(LightNovelSniffer_Strings.CoverDownloadExceptionMessage, urlCover));
-                    }
-
-                    throw;
-                }
-            }
+            return lnChapters;
         }
     }
 }

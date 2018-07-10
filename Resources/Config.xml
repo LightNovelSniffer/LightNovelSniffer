@@ -14,4 +14,5 @@ YOU HAVE TO COPY IT TO YOUR CLIENT (CLI OR GUI)
     <publisher>LightNovelSniffer</publisher>
     <defaultChapterTitle>Chapter {0}</defaultChapterTitle>
     <maxChapterOnErrorCountBeforeStop>10</maxChapterOnErrorCountBeforeStop> <!-- if not interactiveMode, will try X chapters on error before stoping the process -->
+    <resumeExistingFile>true</resumeExistingFile><!-- if true, will try to use the .json file to guess the last chapter already processed and start from the next one. If false, will start from scratch -->
 </Parameters>

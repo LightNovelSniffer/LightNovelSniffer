@@ -10,5 +10,6 @@ namespace LightNovelSniffer.Config
         public static string DEFAULT_CHAPTER_TITLE;
         public static int MAX_CHAPTER_ON_ERROR_COUNT_BEFORE_STOP;
         public static List<LnParameters> LN_TO_RETRIEVE;
+        public static bool RESUME_EXISTING_FILE;
     }
 }

@@ -60,12 +60,12 @@ namespace LightNovelSniffer.Libs.DotNetEpub
 
         internal XElement ToElement()
         {
-            XElement element = new XElement(LightNovelSniffer.Libs.DotNetEpub.Document.OpfNS + "spine");
+            XElement element = new XElement(Document.OpfNS + "spine");
             if (!String.IsNullOrEmpty(_toc))
                 element.Add(new XAttribute("toc", _toc));
             foreach (ItemRef r in _itemRefs)
             {
-                var item = new XElement(LightNovelSniffer.Libs.DotNetEpub.Document.OpfNS + "itemref", new XAttribute("idref", r.id));
+                var item = new XElement(Document.OpfNS + "itemref", new XAttribute("idref", r.id));
                 if (!r.linear)
                     item.SetAttributeValue("linear", "no");
                 element.Add(item);
