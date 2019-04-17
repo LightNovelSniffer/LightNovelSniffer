@@ -91,7 +91,7 @@ namespace LightNovelSniffer.Config
             if (resetLnListBeforeInit || Globale.LN_TO_RETRIEVE == null)
                 Globale.LN_TO_RETRIEVE = new List<LnParameters>();
 
-            InitLightNovelsFromFile(path + "\\" + lnFileName);
+            InitConfFromFile(Path.Combine(path, lnFileName));
         }
 
         private static void InitLightNovelsFromFile(string file)
@@ -178,7 +178,7 @@ namespace LightNovelSniffer.Config
             string path = Path.GetDirectoryName(
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
 
-            InitConfFromFile(path + "\\" + confFileName);
+            InitConfFromFile(Path.Combine(path, confFileName));
         }
 
         private static void InitConfFromFile(string file)
