@@ -91,10 +91,10 @@ namespace LightNovelSniffer.Web
                 } catch (System.Exception e)
                 {
                     if (!Globale.INTERACTIVE_MODE)
-                        output.Log(string.Format(LightNovelSniffer_Strings.LogErrorProcessingUrlByParser, string.Format(baseUrl, i), parser.GetType()));
+                        output.Log(string.Format(LightNovelSniffer_Strings.LogErrorProcessingUrlByParser, string.Format(i + " (" + baseUrl + ")", i), parser.GetType()));
                     chapterOnErrorCountBeforeStop++;
                     if (    (!Globale.INTERACTIVE_MODE && chapterOnErrorCountBeforeStop > Globale.MAX_CHAPTER_ON_ERROR_COUNT_BEFORE_STOP)
-                            || (Globale.INTERACTIVE_MODE && !input.Ask(string.Format(LightNovelSniffer_Strings.LogChapterParserException_AskForNext, i))))
+                            || (Globale.INTERACTIVE_MODE && !input.Ask(string.Format(LightNovelSniffer_Strings.LogChapterParserException_AskForNext, string.Format(i + " ("+baseUrl+")", i)))))
                         break;
                 }
                 i++;
